@@ -1,0 +1,41 @@
+<ion-header>
+        <ion-navbar>
+          <ion-title>
+            Smart Home Notifications
+          </ion-title>
+        </ion-navbar>
+      </ion-header>
+      <ion-content class="outer-content">
+          <ion-refresher (ionRefresh)="doRefresh($event)">
+              <ion-refresher-content pullingText="Pull to refresh..."
+              refreshingText="Refreshing..."></ion-refresher-content>
+            </ion-refresher>
+          <ion-list>
+              <button ion-item> 
+                {{ user.name }}
+              </button>
+            </ion-list> 
+        <ion-list>
+            <ion-list-header>
+                
+                <ion-badge item-end color="danger">{{user.name}}</ion-badge>
+                <ion-badge item-end color="danger">{{user.threadsTotal}}</ion-badge>
+            </ion-list-header>
+            <ion-item><img [src]="user.imageUrl"/></ion-item>
+                
+        </ion-list>
+        <ion-list>
+            <button ion-item *ngFor="let message of messages" (click)="itemSelected(item)">
+              {{ message.result.id }} {{message.result.snippet}}
+            </button>  
+          </ion-list>
+      </ion-content>
+      
+      <style>
+        ion-list + ion-list {
+          margin-top: 0;
+        }
+        .small-text {
+          font-size: 10px;
+        }
+      </style>

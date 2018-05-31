@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>视频示例{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>{{videoInfo}}</h1>
+  <div class="make-center">
+    <br/>
+    <label>房间号：{{roomId}}</label>
+    <br/>
+    <button [disabled]="isBtnOpenRoomDisabled" (click)="btnOpenRoom_onclick()">开房间</button>
+    <button [disabled]="isBtnJoinRoomDisabled" (click)="btnJoinRoom_onclick()">进入房间</button>
+    <button [disabled]="isBtnLeaveRoomDisabled" (click)="btnLeaveRoom_onclick()">离开或关闭房间</button>
+    <br/>
+    <div id="room-urls" ></div>
+  </div>
+
+  <div id="videos-container"></div>
+
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-content class="page-onboard" padding-top no-bounce>
+
+    <ion-slides pager="true">
+        <ion-slide *ngFor="let slide of slides" >
+            <ion-toolbar>
+                <ion-buttons end>
+                    <button ion-button color="primary" (click)="close()">Pular</button>
+                </ion-buttons>
+            </ion-toolbar>
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
+        </ion-slide>
+        <ion-slide>
+            <ion-toolbar>
+            </ion-toolbar>
+            <h2 class="slide-title">Pronto para conhecer a aplicação?</h2>
+            <button ion-button large clear icon-right color="primary" (click)="close()">
+                Continuar
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

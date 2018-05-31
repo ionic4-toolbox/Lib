@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="range" (ionChange)="updateRange()">
+      <ion-segment-button value="week">
+        Week
+      </ion-segment-button>
+      <ion-segment-button value="month">
+        Month
+      </ion-segment-button>
+      <ion-segment-button value="year">
+        Year
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="cards-background">
+  <ion-card>
+    <ion-card-header>
+      <span class="card-title">Summary: This {{ formatRange() }}</span>
+    </ion-card-header>
+    <ion-list>
+      <button ion-item (click)="scrollTo('trips')">
+        <ion-icon name="bicycle" item-left></ion-icon>
+        {{tripsCount}} trips
+      </button>
+      <button ion-item (click)="scrollTo('duration')">
+        <ion-icon name="stopwatch" item-left></ion-icon>
+        {{stats.formatDuration()}}
+      </button>
+      <button ion-item (click)="scrollTo('distance')">
+        <ion-icon name="pin" item-left></ion-icon>
+        {{stats.formatDistance()}} mi
+      </button>
+      <button ion-item (click)="scrollTo('speed')">
+        <ion-icon name="speedometer" item-left></ion-icon>
+        {{stats.formatSpeed()}} MPH
+      </button>
+      <button ion-item (click)="scrollTo('calories')">
+        <ion-icon name="pizza" item-left></ion-icon>
+        {{stats.formatCalories()}} cal
+      </button>
+      <button ion-item (click)="scrollTo('ghg')">
+        <ion-icon name="leaf" item-left></ion-icon>
+        {{stats.formatGHG()}} lb GHG
+      </button>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngFor="let chart of charts" id="chart-{{ chart.id }}">
+    <ion-card-header>
+      <ion-icon name="{{ chart.icon }}" item-left></ion-icon>
+      <span class="card-title">{{ chart.title }}</span>
+      <button ion-button icon-only clear small (click)="scrollToTop()"
+          class="top-button">
+        <ion-icon name="arrow-up"></ion-icon>
+      </button>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-wrapper chart-{{range}}">
+        <x-chartist
+          class="chart"
+          [data]="chart.data"
+          [type]="chart.type"
+          [options]="chart.options"
+          [responsiveOptions]="chart.responsiveOptions"
+          [events]="chart.events">
+        </x-chartist>
+        <div class="chart-xaxis-label">{{ chart.xAxisLabel }}</div>
+        <div class="chart-yaxis-label">{{ chart.yAxisLabel }}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

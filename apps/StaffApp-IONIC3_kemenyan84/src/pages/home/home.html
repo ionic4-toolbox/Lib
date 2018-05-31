@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Staff Informations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-list>
+    <button (click)="detailsPage(staff)" *ngFor="let staff of staffList">
+      <ion-thumbnail item-start>
+        <img [src]="staff.imageURL">
+      </ion-thumbnail>
+      <h2>{{staff.name}}</h2>
+      <p>{{staff.company}}</p>
+      <button (click)="detailsPage(staff)" ion-button clear item-end>View</button>
+    </button>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="pageAdd()"><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

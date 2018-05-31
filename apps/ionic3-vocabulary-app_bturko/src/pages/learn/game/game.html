@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Игра</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <tag-badge *ngIf="!showGame" (onChanged)="onChanged($event)"></tag-badge>
+  <tag-game1 *ngIf="showGame"></tag-game1>
+
+</ion-content>

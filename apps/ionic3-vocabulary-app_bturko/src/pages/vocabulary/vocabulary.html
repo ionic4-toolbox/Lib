@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>vocabulary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-tabs class="tabs-icon-text" [color]="isAndroid ? 'royal' : 'primary'">
+    <ion-tab tabIcon="book" tabTitle="Словарь" [root]="tab1Root"></ion-tab>
+    <ion-tab tabIcon="contact" tabTitle="Мои слова" [root]="tab2Root"></ion-tab>
+  </ion-tabs>
+</ion-content>

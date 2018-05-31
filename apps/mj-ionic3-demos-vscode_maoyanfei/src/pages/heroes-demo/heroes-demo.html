@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>英雄之旅{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let p of pages" (click)="itemSelected(p.pageName)">
+        {{ p.pageTitle }}
+      </button>
+  </ion-list>
+</ion-content>

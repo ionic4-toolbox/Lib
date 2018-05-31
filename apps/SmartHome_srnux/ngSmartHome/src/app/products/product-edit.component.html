@@ -1,0 +1,138 @@
+<md-card>
+<div>
+    <md-toolbar color="primary">
+        <span>{{pageTitle}}</span>
+        <span class="md-toolbar-spacer"></span>
+        <md-icon class="example-icon">contact_mail</md-icon>
+    </md-toolbar>
+
+    <div class="panel-body">
+        <form class="form-horizontal"
+              novalidate
+              (ngSubmit)="saveProduct()"
+              [formGroup]="productForm" >
+ 
+                
+                <div>
+                    <md-input-container style="width: 40%" class="form-group"
+                                        [ngClass]="{'has-error': displayMessage.productName }" dividerColor="warn">
+                        <input mdInput #productName formControlName="productName" placeholder="First Name (50 max)">
+                        <md-hint align="left">{{productName.value.length}} / 50</md-hint>
+                        <md-hint align="end" class="error" *ngIf="displayMessage.productName">
+                            <span color="warn" >
+                                {{displayMessage.productName}}
+                            </span>
+                        </md-hint>
+                    </md-input-container>
+                </div>
+
+                
+                 <div>
+                    <md-input-container style="width: 40%" class="form-group"
+                                        [ngClass]="{'has-error': displayMessage.productCode }" dividerColor="warn">
+                        <input mdInput #productCode formControlName="productCode" placeholder="Product Code (50 max)">
+                        <md-hint align="left">{{productCode.value.length}} / 50</md-hint>
+                        <md-hint align="end" class="error" *ngIf="displayMessage.productCode">
+                            <span color="warn" >
+                                {{displayMessage.productCode}}
+                            </span>
+                        </md-hint>
+                    </md-input-container>
+                </div>
+
+                <div>
+                    <md-input-container style="width: 40%" class="form-group"
+                                        [ngClass]="{'has-error': displayMessage.starRating }" dividerColor="warn">
+                        <input mdInput #starRating formControlName="starRating" placeholder="Star Rating (1-5)">
+                        <md-hint align="left">{{starRating.value.length}} / 50</md-hint>
+                        <md-hint align="end" class="error" *ngIf="displayMessage.starRating">
+                            <span color="warn" >
+                                {{displayMessage.starRating}}
+                            </span>
+                        </md-hint>
+                    </md-input-container>
+                </div>
+
+                <div formArrayName="tags">
+                    <div class="row">
+                        <button md-raised-button color="accent"
+                                        type="button"
+                                        (click)="addTag()">
+                                    Add Tag
+                        </button>
+                    </div>
+                    <div class="form-group"
+                        *ngFor="let tag of tags.controls; let i=index" >
+                        
+                        <md-input-container style="width: 40%" class="form-group"
+                                        [ngClass]="{'has-error': displayMessage.starRating }" dividerColor="warn">
+                            <input mdInput #starRating [formControlName]="i" placeholder="Tag">
+                            <!--<md-hint align="left">{{starRating.value.length}} / 50</md-hint>
+                            <md-hint align="end" class="error" *ngIf="displayMessage.starRating">
+                                <span color="warn" >
+                                    {{displayMessage.starRating}}
+                                </span>
+                            </md-hint>-->
+                        </md-input-container>
+                        
+                    </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': displayMessage.description}">
+                    <label class="col-md-2 control-label" for="descriptionId">Description</label>
+
+                    <div class="col-md-8">
+                        <textarea class="form-control" 
+                                id="descriptionId" 
+                                placeholder="Description"
+                                rows=3
+                                formControlName="description"></textarea>
+                        <span class="help-block" *ngIf="displayMessage.description">
+                                {{ displayMessage.description}}
+                        </span>
+                    </div>
+                </div>
+                
+                <md-input-container style="width: 40%" class="form-group"
+                                        [ngClass]="{'has-error': displayMessage.description }" dividerColor="warn">
+                        <input mdInput #description formControlName="description" placeholder="SDescription">
+                        <md-hint align="left">{{description.value.length}} / 50</md-hint>
+                        <md-hint align="end" class="error" *ngIf="displayMessage.description">
+                            <span color="warn" >
+                                {{displayMessage.description}}
+                            </span>
+                        </md-hint>
+                    </md-input-container>
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-2">
+                            <span>
+                                <button md-raised-button color="accent"
+                                        type="submit"
+                                        [disabled]="!productForm.valid">
+                                    Save
+                                </button>
+                            </span>
+                            <span>
+                                <a md-raised-button 
+                                        type="button"
+                                        [routerLink]="['/products']">
+                                    Cancel
+                                </a>
+                            </span>
+                            <span>
+                                <button md-raised-button color="warn"
+                                        type="button"
+                                        (click)="deleteProduct()">
+                                    Delete
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+        </form>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    </div>
+
+</div>
+</md-card>

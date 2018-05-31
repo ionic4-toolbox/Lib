@@ -1,0 +1,30 @@
+<ion-toolbar>
+  <ion-title>Игра {{game.seconds}}</ion-title>
+  <ion-buttons start>
+    <button ion-button icon-only color="royal"></button>
+    <ion-icon name="pause"></ion-icon>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-item-group *ngIf="game.seconds > 0">
+  <ion-item-divider color="light">{{curQuestion.words[curQuestion.rightAnswer].translation}}</ion-item-divider>
+  <ion-item *ngFor="let w of curQuestion.words; index as $index">
+    <span (click)="choose($index)">{{w.text}}</span>
+  </ion-item>
+
+</ion-item-group>
+
+<div *ngIf="game.seconds < 1">
+  <ion-row>
+    Результаты:
+  </ion-row>
+  <ion-row>
+    {{game.rightAnswerCount}} / {{game.askedCount}}
+  </ion-row>
+  <ion-row>
+    <ion-col *ngFor="let w of stars">
+      <ion-icon name="star" color="bright"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+</div>

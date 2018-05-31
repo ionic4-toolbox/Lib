@@ -1,0 +1,17 @@
+<ion-toolbar>
+	<ion-title (click)="openSavedList($event)"> {{search.city}}
+		<ion-icon float-right name="arrow-dropdown"></ion-icon>
+	</ion-title>
+	<ion-buttons end>
+		<button *ngIf="search" ion-button (click)="toggleAddState()">
+			<ion-icon *ngIf="!placeAdded" name="star-outline"></ion-icon>
+			<ion-icon *ngIf="placeAdded" name="star"></ion-icon>
+		</button>
+		<button ion-button (click)="openSearch()">
+			<ion-icon name="search"></ion-icon>
+		</button>
+		<button ion-button (click)="openPref()">
+			<ion-icon name="settings"></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-toolbar>

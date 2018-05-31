@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Select foods</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="showFilter()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+      <button ion-button icon-only padding (click)="doneSelecting()">
+        <ion-icon name="done-all"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="selectionSegment">
+      <ion-segment-button value="foods">
+        <ion-icon name="basket"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="recipes">
+        <ion-icon name="restaurant"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div [ngSwitch]="selectionSegment">
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'foods'">
+      <ion-searchbar debounce="2000" placeholder="Search foods" [(ngModel)]="searchQueryFoods" (ionInput)="refreshItems()" (ionCancel)="clearSearchFoods($event)">
+      </ion-searchbar>
+      <ion-list>
+        <ion-item *ngFor="let food of foods">
+          <ion-label text-wrap>{{ food.name }}</ion-label>
+          <ion-radio #radioInput [value]="food.name" (click)="selectItem(food, radioInput)"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-infinite-scroll (ionInfinite)="loadMoreFoods($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'recipes'">
+      <ion-searchbar debounce="2000" placeholder="Search recipes" [(ngModel)]="searchQueryRecipes" (ionCancel)="clearSearchRecipes($event)">
+      </ion-searchbar>
+      <ion-list>
+        <ion-item *ngFor="let recipe of (recipes$ | async) | search: searchQueryRecipes: recipeLimit">
+          <ion-label text-wrap>{{ recipe.name }}</ion-label>
+          <ion-radio [value]="recipe.name" (click)="selectItem(recipe)"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-infinite-scroll (ionInfinite)="loadMoreRecipes($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+    <!-- End of segment -->
+  </div>
+</ion-content>

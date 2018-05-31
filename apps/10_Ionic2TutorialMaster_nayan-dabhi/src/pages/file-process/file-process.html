@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>File Processing Page</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only end (click)="uploadFile()" *ngIf="mSelectFileName != ''">
+        <ion-icon name="md-cloud-upload"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <ion-card>
+    <ion-card-content>
+      <p margin>
+        <button ion-button round full (click)="openImageSelector()">Select File with plugin</button>
+      </p>
+
+      <p>
+        File Path : {{mSelectFilePath}}
+      </p>
+
+      <p>
+        File Name : {{mSelectFileName}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <p margin>
+        <input type="file" name="file" (change)="getFiles($event)">
+      </p>
+
+      <p>
+        File Path : {{mSelectFilePath}}
+      </p>
+
+      <p>
+        File Name : {{mSelectFileName}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

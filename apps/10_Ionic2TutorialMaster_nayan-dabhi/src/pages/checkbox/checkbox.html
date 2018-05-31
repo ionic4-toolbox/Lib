@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Checkbox Demo Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let person of persons; let i = index">
+    <ion-list>
+      <ion-row align-items-center>
+        <ion-col col-1>
+          <ion-checkbox [(ngModel)]="person.isChecked" (click)="openConfirmPopUp(i)"></ion-checkbox>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="{{person.picture.thumbnail}}">
+            </ion-avatar>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-8>
+          <h2>{{person.name.first}} {{person.name.last}}</h2>
+          <p>{{person.email}}</p>
+        </ion-col>
+
+      </ion-row>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer no-padding no-margin>
+  <button ion-button full no-padding no-margin (click)="getSelectedPersons()">Full Button</button>
+</ion-footer>

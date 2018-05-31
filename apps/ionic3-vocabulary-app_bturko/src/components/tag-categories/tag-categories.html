@@ -1,0 +1,13 @@
+<div>
+  {{text}}
+</div>
+<ion-list>
+  <ion-item *ngFor="let cat of categories | myfilter:filterargs">
+    <ion-thumbnail item-start>
+      <img src="assets/imgs/{{cat.imgPath}}" />
+    </ion-thumbnail>
+    <h2>{{cat.name}}</h2>
+    <p></p>
+    <button ion-button clear item-end (click)="learn(cat.id)">Учить</button>
+  </ion-item>
+</ion-list>

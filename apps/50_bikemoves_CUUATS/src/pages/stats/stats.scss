@@ -1,0 +1,65 @@
+page-stats {
+  ion-card-header {
+    background-color: color($colors, light);
+    ion-icon {
+      margin-right: 0.25em;
+    }
+    button {
+      color: black !important;
+      float: right;
+      height: 1.25em !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+  }
+  .card-title {
+    font-weight: bold;
+  }
+  .chart-wrapper {
+    height: 300px;
+    padding: 15px 0 0.9em 0.9em;
+    position: relative;
+  }
+  x-chartist {
+    display: block;
+    height: 100%;
+  }
+  .ct-label {
+    font-size: 1.5rem;
+  }
+  .chart-xaxis-label {
+    bottom: 0;
+    font-size: 0.9em;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+  .chart-yaxis-label {
+    font-size: 0.9em;
+    font-weight: bold;
+    left: -300px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transform: rotate(270deg);
+    transform-origin: 100% 0;
+    width: 300px;
+  }
+  .ct-series-a .ct-bar,
+  .ct-series-a .ct-line,
+  .ct-series-a .ct-point,
+  .ct-series-a .ct-slice-donut {
+    stroke: #FBB03B;
+  }
+  .chart-week .ct-bar {
+    stroke-width: 5%;
+  }
+  .chart-month .ct-bar {
+    stroke-width: 1.5%;
+  }
+  .chart-year .ct-bar {
+    stroke-width: 3%;
+  }
+}

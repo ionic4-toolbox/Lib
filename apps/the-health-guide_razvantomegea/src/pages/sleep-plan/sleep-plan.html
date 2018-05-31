@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Sleep plan{{ isDirty ? '*' : ''}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="saveSleep()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="sleepPlanDetails">
+            <ion-segment-button value="guidelines">
+                <ion-icon name="bulb"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="sleep">
+                <ion-icon name="clock"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="warnings">
+                <ion-icon color="{{currentSleep.warnings?.length ? 'danger' : ''}}" name="warning"></ion-icon>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div [ngSwitch]="sleepPlanDetails">
+        <!-- Start of segment -->
+        <ion-list *ngSwitchCase="'guidelines'">
+            <ion-item>
+                <h2>Sleep 7-9 hours</h2>
+                <p text-wrap>We need to catch 5 complete sleep cycles of 90-110 minutes.</p>
+            </ion-item>
+            <ion-item>
+                <h2>Go to bed at the same hour</h2>
+                <p text-wrap>Set your circadian rhythm (biological clock)</p>
+            </ion-item>
+            <ion-item>
+                <h2>Go to bed before 10:00 p.m.</h2>
+                <p text-wrap>Between 10:00 p.m. and 01:00 a.m. our adrenal glands work to repair the body</p>
+            </ion-item>
+            <ion-item>
+                <h2>Avoid electronics before bed</h2>
+                <p text-wrap>Electronics emit blue light, which is perceived as sunlight.</p>
+            </ion-item>
+        </ion-list>
+        <!-- End of segment -->
+
+        <!-- Start of segment -->
+        <ion-list *ngSwitchCase="'sleep'">
+            <ion-item>
+                <ion-label floating>Bed time</ion-label>
+                <ion-datetime displayFormat="hh:mm a" pickerFormat="hh mm a" [(ngModel)]="currentSleep.bedTime" (ionChange)="changedTime()"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Wake up time</ion-label>
+                <ion-datetime displayFormat="hh:mm a" pickerFormat="hh mm a" [(ngModel)]="currentSleep.wakeUpTime" (ionChange)="changedTime()"></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <!-- End of segment -->
+
+        <!-- Start of segment -->
+        <div *ngSwitchCase="'warnings'">
+            <ion-list>
+                <button ion-item *ngIf="sleepPlan.daysOfImbalance > 2" (click)="viewSymptoms()">
+                    <ion-icon color="danger" name="warning" item-left></ion-icon>
+                    <h2 text-wrap>You have been having an imbalanced sleep for {{ sleepPlan.daysOfImbalance }} days</h2>
+                    <p text-wrap>Try to reaorganize your sleep plan</p>
+                    <p item-content>Check symptoms</p>
+                </button>
+                <ion-item *ngFor="let warning of currentSleep.warnings">
+                    <ion-icon color="danger" name="warning" item-left></ion-icon>
+                    <h2 text-wrap>{{ warning.message }}</h2>
+                    <p text-wrap>{{ warning.moreInfo }}</p>
+                </ion-item>
+            </ion-list>
+        </div>
+        <!-- End of segment -->
+    </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Preferences</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="edits">
+    <ion-list-header>Units</ion-list-header>
+    <ion-item *ngFor="let unit of unitDic|keys">
+      <ion-label>{{unit|properNoun}}:</ion-label>
+      <ion-select [(ngModel)]="edits[unit]" interface="popover">
+        <ion-option *ngFor="let system of unitDic[unit]|keys">{{unitDic[unit][system]}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list-header>Icon Set</ion-list-header>
+    <ion-item>
+      <ion-label>Choose Icons</ion-label>
+      <button ion-button item-right color="dark" clear (click)="openIconSelect()">Set {{edits.icon - 5}}
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-list-header *ngIf="edits.locations.length > 0">Saved Locations</ion-list-header>
+    <ion-item *ngFor="let place of edits.locations">{{place.toString()}}
+      <button ion-button item-right icon-only clear color="danger" (click)="deleteLocation(place)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Modals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Hobbits
+    </ion-list-header>
+
+    <a ion-item *ngFor="let item of items" (click)="openModal(item)">
+      {{item.name}}
+    </a>
+  </ion-list>
+
+</ion-content>

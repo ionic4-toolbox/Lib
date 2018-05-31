@@ -1,0 +1,44 @@
+﻿<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()" color="primary">跳过</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-1.png" class="slide-image"/>
+      <h2 class="slide-title">
+        欢迎
+      </h2>
+      <p>
+        <b>ionic会议app</b>是一个实际的预览Ionic框架的action例子, 并证明了所有代码都能正确运行。
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png" class="slide-image"/>
+      <h2 class="slide-title" >什么是Ionic？</h2>
+      <p><b>Ionic框架</b>是一个开源的SDK，能让开发者利用web技术（html、css、javascript）创建高质量的手机app。</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-3.png" class="slide-image"/>
+      <h2 class="slide-title">什么是Ionic Platform？</h2>
+      <p>The <b>Ionic Platform</b>是一个云平台， 用于管理和扩展Ionic应用的集成服务, 如推通知, 本机构建, 用户认证和实时更新等。</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
+      <h2 class="slide-title">准备玩玩吗？</h2>
+      <button ion-button icon-end large clear (click)="startApp()">
+        继续
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

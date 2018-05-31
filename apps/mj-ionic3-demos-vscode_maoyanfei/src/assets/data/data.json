@@ -1,0 +1,402 @@
+﻿{
+
+    "schedule": [
+        {
+            "date": "2047-05-17",
+            "groups": [
+                {
+                    "time": "8:00",
+                    "sessions": [
+                        {
+                            "name": "早餐",
+                            "timeStart": "8:00 am",
+                            "timeEnd": "9:00 am",
+                            "location": "东门",
+                            "tracks": [ "胡辣汤" ],
+                            "id": "1"
+                        }
+                    ]
+                },
+                {
+                    "time": "9:15",
+                    "sessions": [
+                        {
+                            "name": "介绍Appcamp.io",
+                            "location": "2203房间",
+                            "description": "移动设备和浏览器现在已经足够先进, 开发者可以使用开放的 web 技术 (如 HTML5、javascript 和 css) 来构建本地质量的移动应用程序。在本讲座中, 我们将提供关于为什么和如何创建Ionic的背景, 我们的设计决策, 因为我们集成了Ionic与Angular, 以及对移动平台的性能考虑, 我们的团队不得不克服。我们还将回顾新的和即将到来的Ionic特性, 并讨论结合移动应用开发和Angular的隐藏的力量和好处。",
+                            "speakerNames": [ "张三以" ],
+                            "timeStart": "9:15",
+                            "timeEnd": "9:30",
+                            "tracks": [ "Ionic" ],
+                            "id": "2"
+                        },
+                        {
+                            "name": "Ionic入门",
+                            "location": "2202房间",
+                            "description": "学习Ionic的基本知识。",
+                            "speakerNames": [ "李四尔" ],
+                            "timeStart": "9:30",
+                            "timeEnd": "9:45",
+                            "tracks": [ "Ionic" ],
+                            "id": "3"
+                        },
+                        {
+                            "name": "Ionic工具",
+                            "location": "2201房间",
+                            "description": "介绍Ionic工具的用法。",
+                            "speakerNames": [ "王五伞" ],
+                            "timeStart": "9:45",
+                            "timeEnd": "10:00",
+                            "tracks": [ "Tooling" ],
+                            "id": "4"
+                        }
+                    ]
+                },
+                {
+                    "time": "10:00",
+                    "sessions": [
+                        {
+                            "name": "Ionic3合并",
+                            "location": "2201房间",
+                            "description": "介绍Ionic3的集成或合并。",
+                            "speakerNames": [ "赵六", "胡七" ],
+                            "timeStart": "10:00",
+                            "timeEnd": "10:15",
+                            "tracks": [ "Ionic" ],
+                            "id": "5"
+                        },
+                        {
+                            "name": "Angular的新功能",
+                            "location": "2203房间",
+                            "description": "介绍Angular的新功能。",
+                            "speakerNames": [ "赵六" ],
+                            "timeStart": "10:15",
+                            "timeEnd": "10:30",
+                            "tracks": [ "Angular" ],
+                            "id": "6"
+                        },
+                        {
+                            "name": "Ionicons的演变",
+                            "location": "2202房间",
+                            "description": "介绍Ionicons的演变。",
+                            "speakerNames": [ "张三", "李四" ],
+                            "timeStart": "10:15",
+                            "timeEnd": "10:30",
+                            "tracks": [ "Design" ],
+                            "id": "7"
+                        },
+                        {
+                            "name": "Ionic.io服务",
+                            "location": "2202房间",
+                            "description": "介绍Ionic.io service",
+                            "speakerNames": [ "孔久久" ],
+                            "timeStart": "10:45",
+                            "timeEnd": "11:00",
+                            "tracks": [ "Services" ],
+                            "id": "8"
+                        }
+                    ]
+                },
+                {
+                    "time": "11:00",
+                    "sessions": [
+                        {
+                            "name": "Ionic Workshop",
+                            "location": "Room 2201",
+                            "description": "介绍Ionic商店。",
+                            "speakerNames": [ "赵六", "张三" ],
+                            "timeStart": "11:00",
+                            "timeEnd": "11:45",
+                            "tracks": [ "Workshop" ],
+                            "id": "9"
+                        },
+                        {
+                            "name": "互动交流",
+                            "location": "2203房间",
+                            "description": "提问、讨论。",
+                            "speakerNames": [ "张三", "李四" ],
+                            "timeStart": "11:30",
+                            "timeEnd": "11:50",
+                            "tracks": [ "Communication" ],
+                            "id": "10"
+                        },
+                        {
+                            "name": "Ionic的导航技术",
+                            "location": "2203房间",
+                            "description": "介绍Ionic的导航技术。",
+                            "speakerNames": [ "王五", "张三" ],
+                            "timeStart": "11:30",
+                            "timeEnd": "12:00",
+                            "tracks": [ "Navigation" ],
+                            "id": "11"
+                        }
+                    ]
+                },
+                {
+                    "time": "12:00",
+                    "sessions": [
+                        {
+                            "name": "午餐",
+                            "location": "西门口",
+                            "description": "和所有的Ionic狂热分子一起吃午餐, 并谈论关于Ionic的所有事情",
+                            "timeStart": "12:00",
+                            "timeEnd": "13:00",
+                            "tracks": [ "点心" ],
+                            "id": "12"
+                        }
+                    ]
+                },
+                {
+                    "time": "13:00",
+                    "sessions": [
+                        {
+                            "name": "Ionic in the Enterprise",
+                            "location": "Room 2201",
+                            "description": "Ionic企业。",
+                            "speakerNames": [ "波波" ],
+                            "timeStart": "13:00",
+                            "timeEnd": "13:15",
+                            "tracks": [ "Communication" ],
+                            "id": "13"
+                        },
+                        {
+                            "name": "Ionic Worldwide",
+                            "location": "Room 2201",
+                            "description": "讨论Ionic Worldwide",
+                            "speakerNames": [ "李四" ],
+                            "timeStart": "13:15",
+                            "timeEnd": "13:30",
+                            "tracks": [ "Communication" ],
+                            "id": "14"
+                        },
+                        {
+                            "name": "The Ionic package service",
+                            "location": "Room 2203",
+                            "description": "讨论The Ionic package service",
+                            "speakerNames": [ "张三", "李四" ],
+                            "timeStart": "13:30",
+                            "timeEnd": "14:00",
+                            "tracks": [ "Services" ],
+                            "id": "15"
+                        }
+                    ]
+                },
+                {
+                    "time": "14:00",
+                    "sessions": [
+                        {
+                            "name": "Push Notifications in Ionic",
+                            "location": "Room 2202",
+                            "description": "关于Push Notifications in Ionic",
+                            "speakerNames": [ "王五", "赵六" ],
+                            "timeStart": "14:00",
+                            "timeEnd": "14:30",
+                            "tracks": [ "Services" ],
+                            "id": "16"
+                        },
+                        {
+                            "name": "Ionic Documentation",
+                            "location": "Room 2202",
+                            "description": "介绍Ionic文档。",
+                            "speakerNames": [ "张三" ],
+                            "timeStart": "14:30",
+                            "timeEnd": "14:45",
+                            "tracks": [ "Documentation" ],
+                            "id": "17"
+                        },
+                        {
+                            "name": "UX planning in Ionic",
+                            "location": "Room 2203",
+                            "description": "介绍Ionic的UX计划。",
+                            "speakerNames": [ "张三", "王五" ],
+                            "timeStart": "14:45",
+                            "timeEnd": "15:00",
+                            "tracks": [ "Design" ],
+                            "id": "18"
+                        }
+                    ]
+                },
+                {
+                    "time": "15:00",
+                    "sessions": [
+                        {
+                            "name": "Directives in Ionic",
+                            "location": "Room 2201",
+                            "description": "介绍Directives in Ionic",
+                            "speakerNames": [ "Ted Turtle" ],
+                            "timeStart": "15:00",
+                            "timeEnd": "15:30",
+                            "tracks": [ "Angular" ],
+                            "id": "19"
+                        },
+                        {
+                            "name": "Mobile States",
+                            "location": "Room 2202",
+                            "description": "Mobile devices and browsers are now advanced enough that developers can build native-quality mobile apps using open web technologies like HTML5, Javascript, and CSS. In this talk, we’ll provide background on why and how we created Ionic, the design decisions made as we integrated Ionic with Angular, and the performance considerations for mobile platforms that our team had to overcome. We’ll also review new and upcoming Ionic features, and talk about the hidden powers and benefits of combining mobile app development and Angular.",
+                            "speakerNames": [ "Rachel Rabbit" ],
+                            "timeStart": "3:30 pm",
+                            "timeEnd": "3:45 pm",
+                            "tracks": [ "Navigation" ],
+                            "id": "20"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+
+    "speakers": [
+        {
+            "name": "张三",
+            "profilePic": "assets/img/speakers/bear.jpg",
+            "twitter": "ionicframework",
+            "about": "张三是个“爱爱熊”。",
+            "location": "Everywhere",
+            "email": "burt@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "1"
+        },
+        {
+            "name": "李四",
+            "profilePic": "assets/img/speakers/cheetah.jpg",
+            "twitter": "ionicframework",
+            "about": "李四是个“猎豹”。",
+            "location": "Everywhere",
+            "email": "charlie@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "2"
+        },
+        {
+            "name": "王五",
+            "profilePic": "assets/img/speakers/duck.jpg",
+            "twitter": "ionicframework",
+            "about": "王五是个鸭子。",
+            "location": "Everywhere",
+            "email": "donald@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "3"
+        },
+        {
+            "name": "赵六",
+            "profilePic": "assets/img/speakers/eagle.jpg",
+            "twitter": "ionicframework",
+            "about": "赵六是个鹰。",
+            "location": "Everywhere",
+            "email": "eva@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "4"
+        },
+        {
+            "name": "谢七",
+            "profilePic": "assets/img/speakers/elephant.jpg",
+            "twitter": "ionicframework",
+            "about": "谢七是个大象。",
+            "location": "Everywhere",
+            "email": "ellie@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "5"
+        },
+        {
+            "name": "胡八",
+            "profilePic": "assets/img/speakers/giraffe.jpg",
+            "twitter": "ionicframework",
+            "about": "胡八是个长颈鹿。",
+            "location": "Everywhere",
+            "email": "gino@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "6"
+        },
+        {
+            "name": "伊莎贝拉鬣蜥",
+            "profilePic": "assets/img/speakers/iguana.jpg",
+            "twitter": "ionicframework",
+            "about": "伊莎贝拉是个鬣蜥。",
+            "location": "Everywhere",
+            "email": "isabella@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "7"
+        },
+        {
+            "name": "卡尔小猫",
+            "profilePic": "assets/img/speakers/kitten.jpg",
+            "twitter": "ionicframework",
+            "about": "卡尔是个小猫。",
+            "location": "Everywhere",
+            "email": "karl@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "8"
+        },
+        {
+            "name": "流浪狮子",
+            "profilePic": "assets/img/speakers/lion.jpg",
+            "twitter": "ionicframework",
+            "about": "流浪是个狮子。",
+            "location": "Everywhere",
+            "email": "lionel@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "9"
+        },
+        {
+            "name": "莫莉鼠标",
+            "profilePic": "assets/img/speakers/mouse.jpg",
+            "twitter": "ionicframework",
+            "about": "莫莉是个鼠标。",
+            "location": "Everywhere",
+            "email": "molly@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "10"
+        },
+        {
+            "name": "保罗小狗",
+            "profilePic": "assets/img/speakers/puppy.jpg",
+            "twitter": "ionicframework",
+            "about": "保罗是个小狗。",
+            "location": "Everywhere",
+            "email": "paul@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "11"
+        },
+        {
+            "name": "雷切尔兔",
+            "profilePic": "assets/img/speakers/rabbit.jpg",
+            "twitter": "ionicframework",
+            "about": "雷切尔是个兔子。",
+            "location": "Everywhere",
+            "email": "rachel@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "12"
+        },
+        {
+            "name": "泰德龟",
+            "profilePic": "assets/img/speakers/turtle.jpg",
+            "twitter": "ionicframework",
+            "about": "泰德是个乌龟。",
+            "location": "Everywhere",
+            "email": "ted@example.com",
+            "phone": "+1-541-754-3010",
+            "id": "13"
+        }
+    ],
+
+
+    "map": [
+        {
+            "name": "Monona 阳台会议中心",
+            "lat": 43.071584,
+            "lng": -89.380120,
+            "center": true
+        },
+        {
+            "name": "Ionic HQ",
+            "lat": 43.074395,
+            "lng": -89.381056
+        },
+        {
+            "name": "Afterparty - Brocach Irish Pub",
+            "lat": 43.07336,
+            "lng": -89.38335
+        }
+    ]
+
+}

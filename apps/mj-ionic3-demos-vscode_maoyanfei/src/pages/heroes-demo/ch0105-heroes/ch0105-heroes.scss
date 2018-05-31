@@ -1,0 +1,32 @@
+page-ch0105-heroes {
+    .selected {
+        background-color: #CFD8DC !important;
+        color: white;
+      }
+
+      li.selected:hover {
+        background-color: #BBD8DC !important;
+        color: white;
+      }
+      li:hover {
+        color: #607D8B;
+        background-color: #DDD;
+        left: .1em;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: small;
+        color: white;
+        padding: 0.8em 0.7em 0 0.7em;
+        background-color: #607D8B;
+        line-height: 1em;
+        position: relative;
+        left: -1px;
+        top: -4px;
+        height: 1.8em;
+        margin-right: .8em;
+        border-radius: 4px 0 0 4px;
+      }
+
+}

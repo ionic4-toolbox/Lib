@@ -1,0 +1,65 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <button ion-button clear icon-right color="light" (click)="toggleLocation()">
+        {{ location }}
+        <ion-icon name="arrow-down"></ion-icon>
+      </button>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="cards-bg">
+
+  <div *ngFor="let card of cards">
+
+    <ion-card>
+
+      <img src="{{ '../../assets/imgs/events/' + card.img }}"/>
+
+      <div class="fab-container">
+        <ion-fab bottom right edge>
+          <button ion-fab mini color="light" (click)="goToEvent(card)">
+            <ion-icon name="ios-open-outline"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+
+      <ion-card-content>
+        <ion-row no-padding>
+
+          <ion-col col-3 text-center>
+            <p class="month">
+              {{ card.month }}
+            </p>
+            <p class="day">
+              {{ card.day }}
+            </p>
+          </ion-col>
+          <ion-col class="event-name">
+            {{ card.name }}
+            <p class="event-location">
+              {{ card.location }}
+            </p>
+          </ion-col>
+
+        </ion-row>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
+
+</ion-content>
+
+<!--
+
+https://stackoverflow.com/questions/46731735/how-to-place-the-fab-button-on-the-edge-of-a-div
+
+-->

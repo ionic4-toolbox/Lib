@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Next Week</ion-title>
+  </ion-navbar>
+  <header-buttons *ngIf="pref && search" [search]="search" [pref]="pref"></header-buttons>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="fetchData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngIf="error">
+    <ion-card-content>
+      <p text-center>Data failed to load from Weather Underground.</p>
+      <p text-center>Please try agian later.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <forecast-list *ngIf="forecasts && pref" [search]="search" [pref]="pref" [forecasts]="forecasts"></forecast-list>
+
+</ion-content>

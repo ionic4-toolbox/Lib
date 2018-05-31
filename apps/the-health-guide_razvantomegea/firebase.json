@@ -1,0 +1,9 @@
+{
+  // If you went through the "Realtime Database Security Rules" step.
+  "database": {
+    "rules": "database-rules.json"
+  },
+  "hosting": {
+    "public": "www"
+  }
+}

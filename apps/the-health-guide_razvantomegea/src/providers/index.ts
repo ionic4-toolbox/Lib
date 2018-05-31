@@ -1,0 +1,10 @@
+export { ActivityService } from './activity.service';
+export { AuthValidator } from './auth-validator';
+export { DRIService } from './dri.service';
+export { FitnessService } from './fitness.service';
+export { FOOD_GROUPS, FoodService } from './food.service';
+export { MealService } from './meal.service';
+export { NutritionService } from './nutrition.service';
+export { PictureService } from './picture.service';
+export { RecipeService } from './recipe.service';
+export { SleepService } from './sleep.service';

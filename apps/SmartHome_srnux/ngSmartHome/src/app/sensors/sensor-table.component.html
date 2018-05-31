@@ -1,0 +1,37 @@
+<div class="sensor-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" [routerLink]=`['/sensor',{{element.id}}]` -->
+                
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <a [routerLink]="['/sensor', element.id]">
+                  {{element.id}}
+                  </a>
+              <!-- {{element.id}}  -->
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="modelid">
+            <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+            <mat-cell  *matCellDef="let element">
+                 {{element.modelid}} 
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="manufacturername">
+            <mat-header-cell *matHeaderCellDef> Manufacturer </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.manufacturername}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="state.temperature">
+            <mat-header-cell *matHeaderCellDef> Temperature </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.state.temperature}} </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>

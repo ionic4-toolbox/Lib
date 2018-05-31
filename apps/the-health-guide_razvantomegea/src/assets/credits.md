@@ -1,0 +1,9 @@
+http://stretchcoach.com/articles/overtraining/
+https://www.diagnose-me.com/symptoms-of/excess-sugar-consumption.php
+http://www.ehow.com/info_8135341_signs-overworked.html
+https://en.wikipedia.org/wiki/Sleep_deprivation
+https://en.wikipedia.org/wiki/Hypernatremia
+http://www.healthline.com/health/caffeine-overdose#symptoms3
+https://pubs.niaaa.nih.gov/publications/AlcoholOverdoseFactsheet/Overdosefact.htm
+https://www.stress.org/stress-effects/
+http://www.healthline.com/symptom/dehydration

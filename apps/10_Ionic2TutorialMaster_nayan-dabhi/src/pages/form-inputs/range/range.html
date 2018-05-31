@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Range Input</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-card>
+    <ion-item>
+      <p><b>Brightness</b></p>
+      <ion-badge item-end>{{brightness}}</ion-badge>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-range [(ngModel)]="brightness">
+          <ion-icon range-left small name="sunny"></ion-icon>
+          <ion-icon range-right name="sunny"></ion-icon>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <p><b>CONTRAST</b></p>
+      <ion-badge item-end>{{contrast}}</ion-badge>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-range [(ngModel)]="contrast" min="-200" max="200" pin="true" color="secondary">
+          <ion-icon range-left small name="contrast"></ion-icon>
+          <ion-icon range-right name="contrast"></ion-icon>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <p><b>BRUSH</b></p>
+      <ion-badge item-end>{{structure.lower}} - {{structure.upper}}</ion-badge>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-range [(ngModel)]="structure" dualKnobs="true" pin="true" color="dark">
+          <ion-icon range-left small name="brush"></ion-icon>
+          <ion-icon range-right name="brush"></ion-icon>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <p><b>WARMTH</b></p>
+      <ion-badge item-end>{{warmth}}</ion-badge>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-range [(ngModel)]="warmth" min="1000" max="2000" step="100" snaps="true" color="danger">
+          <ion-icon range-left small color="danger" name="thermometer"></ion-icon>
+          <ion-icon range-right color="danger" name="thermometer"></ion-icon>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <p><b>ADJUST TEXT</b></p>
+        <ion-badge item-end>{{text}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-range min="-100" step="10" snaps="true" [(ngModel)]="text">
+          <ion-label range-left class="small-text">A</ion-label>
+          <ion-label range-right>A</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<style>
+  .small-text {
+    font-size: 10px;
+  }
+</style>

@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title text>
+            Lista de usuários
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <button ion-item *ngFor="let user of users">
+            <ion-avatar item-left><img src="http://lorempixel.com/100/100/people/"></ion-avatar>
+            <h2><b>{{user.nome}}</b></h2>
+            <h3>{{user.endereco}}</h3>
+        </button>
+    </ion-list>
+</ion-content>

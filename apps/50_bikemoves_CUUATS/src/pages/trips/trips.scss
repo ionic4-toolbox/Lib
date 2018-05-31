@@ -1,0 +1,80 @@
+page-trips {
+  ion-card .trip-not-submitted {
+    border: 1px solid color($colors, danger);
+  }
+  .delete-trip-button {
+    float: right;
+  }
+  ion-card h2 {
+    font-size: 1.25em !important;
+    margin-top: 0.25em !important;
+  }
+  .trip-summary {
+    .summary-item {
+      display: block;
+      padding: 5px 0;
+      .summary-value {
+        margin-left: 0.75em;
+        ion-icon {
+          margin: 0 0.2em;
+        }
+      }
+    }
+  }
+  ion-item-sliding {
+    .trip-summary {
+      font-size: 0.9em;
+      .summary-item {
+        padding: 5px 0 0;
+      }
+    }
+    &.trip-submitted {
+      img {
+        border: 1px solid color($colors, light);
+      }
+    }
+    &.trip-not-submitted {
+      img {
+        border: 1px solid color($colors, danger);
+      }
+    }
+    .upload .summary-value {
+      color: color($colors, danger);
+    }
+  }
+  .icon-large {
+    font-size: 6em;
+  }
+  .text-large {
+    font-size: 2em;
+    line-height: 1.2em;
+    margin: 0;
+    padding: 1em;
+  }
+  .no-content {
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    .icon-large {
+      color: #bbbbbb;
+      text-shadow: 2px 2px rgba(255, 255, 255, 0.5);
+    }
+    .text-large {
+      color: #666666;
+      text-shadow: 1px 1px rgba(255, 255, 255, 0.8);
+    }
+  }
+  #trip-image-map {
+    background-color: #999999;
+    height: 300px;
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+    width: 400px;
+  }
+  @media only screen and (min-width: map-get($grid-breakpoints, sm)) {
+    ion-card h2 {
+      font-size: 1em !important;
+    }
+  }
+}

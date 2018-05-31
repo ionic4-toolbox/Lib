@@ -1,0 +1,54 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Sensors   -->
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class='row' *ngIf='listFilter'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+        
+        <div class='table-responsive'>
+            <table class='table'
+                   *ngIf='sensors'>
+                <thead>
+                    <tr>
+                        <th>Sensor Name</th>
+                        <th>Model Id</th>
+                        <th>Manufacturer</th>
+                        <th>Temperature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- https://stackoverflow.com/a/42813708/2678371 -->
+                    <tr *ngFor='let key of objectKeys(sensors)'>
+                        <td><a [routerLink]="['/sensor', key]">
+                            {{sensors[key].name}}
+                            </a>
+                        </td>
+                        <td>{{ sensors[key].modelid }}</td>
+                        <td>{{ sensors[key].manufacturername }}</td>
+                        <td>{{ sensors[key].state.temperature }}</td>
+                       <td>
+                            <a class="btn btn-primary" 
+                               [routerLink]="['/sensorEdit', key]">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

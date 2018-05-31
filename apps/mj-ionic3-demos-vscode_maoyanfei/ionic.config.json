@@ -1,0 +1,8 @@
+{
+  "name": "mj-ionic3-demos-vscode",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

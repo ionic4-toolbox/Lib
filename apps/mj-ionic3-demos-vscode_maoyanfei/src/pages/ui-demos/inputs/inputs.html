@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>inputs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p style="background-color: red">基本用法</p>
+  <form (submit)="processForm()" [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-input formControlName="firstName" type="text" placeholder="First Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input formControlName="lastName" type="text" placeholder="Last Name"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block type="submit">Create Account</button>
+    </div>
+  </form>
+
+  <p style="background-color: red">fixed-inline</p>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block>Sign In</button>
+  </div>
+
+  <p style="background-color: red">floating</p>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" block>Sign In</button>
+    </div>
+
+  <p style="background-color: red">inline</p>
+  <ion-list>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" value=""></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block>Sign In</button>
+  </div>
+
+  <p style="background-color: red">inset</p>
+  <ion-list inset>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" value=""></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block>Sign In</button>
+  </div>
+
+  <p style="background-color: red">placeholder</p>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block>Sign In</button>
+  </div>
+
+  <p style="background-color: red">stacked</p>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block>Sign In</button>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Activity plan{{ isDirty ? '*' : ''}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="saveActivityPlan()">
+          <ion-icon name="sync"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="activityPlanDetails">
+      <ion-segment-button value="guidelines">
+        <ion-icon name="bulb"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="activities">
+        <ion-icon name="walk"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="stats">
+        <ion-icon name="analytics"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="warnings">
+        <ion-icon color="{{activityPlan?.warnings?.length ? 'danger' : ''}}" name="warning"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-fab right bottom *ngIf="activityPlanDetails === 'activities'">
+    <button ion-fab color="secondary" (click)="addNewActivity()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <div [ngSwitch]="activityPlanDetails">
+    <!-- Start of segment -->
+    <ion-list *ngSwitchCase="'guidelines'">
+      <ion-item>
+        <h2>Move every hour and every day</h2>
+        <p text-wrap>Sedentarism is one of the leading causes of aging (mortality) and all diseases (cardiovascular, diabetes, cancer,
+          obesity, etc.)</p>
+      </ion-item>
+      <ion-item>
+        <h2>Develop a HIIT (High intensity interval training) routine</h2>
+        <p text-wrap>Increase metabolism and energy, improve cardiovascular output and endurance, burn fat</p>
+      </ion-item>
+      <ion-item>
+        <h2>Exercise all muscle groups every week</h2>
+        <p text-wrap>If you don't use it, you'll lose it</p>
+      </ion-item>
+      <ion-item>
+        <h2>Walk everyday</h2>
+        <p text-wrap>Best exercise for recovery and recreation</p>
+      </ion-item>
+    </ion-list>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <ion-list *ngSwitchCase="'activities'">
+      <ion-item *ngFor="let activity of activityPlan?.activities; let i = index" (click)="changeDuration(activity)">
+        <ion-icon color="danger" name="trash" item-left (click)="removeActivity(i)"></ion-icon>
+        <h2>{{ activity.name }}</h2>
+        <p>{{ activity.duration }} minutes</p>
+        <p item-content>
+          {{ activity.energyBurn }} kcal
+        </p>
+      </ion-item>
+    </ion-list>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'stats'">
+      <ion-list>
+        <ion-item>
+          <h2 text-wrap>Total duration</h2>
+          <p>{{ activityPlan.totalDuration }} minutes</p>
+        </ion-item>
+        <ion-item>
+          <h2>Total energy burn</h2>
+          <p>{{ activityPlan.totalEnergyBurn }} kcal</p>
+        </ion-item>
+        <ion-item>
+          <h2>Energy left to burn</h2>
+          <p>{{ leftEnergy }} kcal</p>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'warnings'">
+      <ion-list>
+        <ion-item *ngFor="let warning of activityPlan?.warnings">
+          <ion-icon color="danger" name="warning" item-left></ion-icon>
+          <h2 text-wrap>{{ warning.message }}</h2>
+          <p text-wrap>{{ warning.moreInfo }}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!-- End of segment -->
+  </div>
+</ion-content>

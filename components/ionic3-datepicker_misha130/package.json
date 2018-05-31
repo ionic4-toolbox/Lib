@@ -1,0 +1,47 @@
+{
+  "name": "ion-datepicker",
+  "version": "2.7.0",
+  "description": "A date picker for ionic",
+  "main": "index.js",
+  "author": "Misha Tarnorutksy <misha130@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/misha130/ion-datepicker"
+  },
+  "keywords": [
+    "datepicker-ionic3",
+    "ionic3",
+    "ionic2",
+    "ionic3 datepicker",
+    "datepicker",
+    "datepicker ionic3",
+    "datepicker for ionic3",
+    "datepicker for ionic3 framework"
+  ],
+  "scripts": {
+    "ngc": "ngc",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -u",
+    "build": "npm run ngc && node ./scripts/copy-package",
+    "publishPackage": "npm run build && cd dist && npm publish",
+    "dev": "tsc --watch"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@angular/common": "4.4.3",
+    "@angular/compiler": "4.4.3",
+    "@angular/compiler-cli": "4.4.3",
+    "@angular/core": "4.4.3",
+    "@angular/forms": "4.4.3",
+    "@angular/http": "4.4.3",
+    "@angular/platform-browser": "4.4.3",
+    "@angular/platform-browser-dynamic": "4.4.3",
+    "connect": "^3.6.3",
+    "ionic-angular": "^3.7.1-201710061612",
+    "ionicons": "3.0.0",
+    "rxjs": "5.4.3",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.18",
+    "typescript": "2.3.4"
+  }
+}

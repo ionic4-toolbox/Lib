@@ -1,0 +1,116 @@
+<ion-header no-border>
+
+  <!--
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+  -->
+
+</ion-header>
+
+<ion-content no-bounce padding>
+
+  <!-- Sign in -->
+
+  <ion-row class="app-icon-container">
+    <ion-col text-center>
+      <!--
+      <ion-icon [@slideInUpWithDelay]="'in'" name="ionic" class="app-icon-zoom"></ion-icon>
+      <img [@slideInUpWithDelay]="'in'" src="../../assets/imgs/santa.png" />
+      <img [@slideInSanta]="santaState" src="../../assets/imgs/santa.gif" />
+      <img [@slideInSanta]="santaState" src="../../assets/imgs/santa.png" />
+      -->
+      <img [@slideInUpWithDelay]="'in'" src="../../assets/imgs/santa.png" />
+
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="credentialsForm">
+
+    <!--
+    <ion-input doesn't support autofocus
+    -->
+    <ion-item [@slideInLeft]="'in'">
+      <ion-label floating>
+        Email
+      </ion-label>
+      <!--
+      <ion-input [formControl]="credentialsForm.controls['email']"
+                 (keyup)="onKeyUp($event)"
+                 type="email">
+      </ion-input>
+
+      <ion-input [formControl]="credentialsForm.controls['email']" type="email">
+      </ion-input>
+      -->
+      <ion-input [formControl]="credentialsForm.controls['email']" type="email">
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="!credentialsForm.controls.email.valid &&
+        (credentialsForm.controls.email.dirty || submitted)" class="validator-error">
+      Please enter a valid email.
+    </div>
+
+    <ion-item [@slideInLeft]="'in'">
+      <ion-label floating>
+        Password
+      </ion-label>
+      <ion-input [formControl]="credentialsForm.controls['password']" type="password"></ion-input>
+    </ion-item>
+
+    <div *ngIf="credentialsForm.controls.password.hasError('pattern') &&
+        (credentialsForm.controls.password.dirty || submitted)"
+        class="validator-error">
+      Passwords should be at least 8 characters long and contain one number, one character and one special character.
+    </div>
+
+    <ion-row class="sign-in-button-container">
+      <ion-col text-center>
+        <button [@slideInLeft]="'in'" ion-button block color="secondary"
+                [disabled]="!credentialsForm.valid" (click)="onSignIn()">
+          Sign in
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <button [@slideInLeft]="'in'" ion-button clear color="light" (click)="onForgotPassword()">
+          Forgot your password?
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <div class="fab-container" style="padding-top: 80px;">
+        <ion-fab left bottom>
+          <button [@slideInLeft]="'in'" ion-fab color="primary"><ion-icon name="log-in"></ion-icon></button>
+          <ion-fab-list side="right">
+            <button ion-fab color="light"><ion-icon name="logo-facebook"></ion-icon></button>
+            <button ion-fab color="light"><ion-icon name="logo-twitter"></ion-icon></button>
+            <button ion-fab color="light"><ion-icon name="logo-googleplus"></ion-icon></button>
+            <button ion-fab color="light"><ion-icon name="logo-github"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
+      </div>
+    </ion-row>
+
+  </form>
+
+</ion-content>
+
+<!--
+
+    <ion-item [@flyInOut]="emailState">
+    <ion-item [@flyInOut]="passwordState">
+
+<ion-input formControlName="email" type="email"></ion-input>
+<ion-input formControlName="password" type="password"></ion-input>
+
+<ion-footer no-border>
+</ion-footer>
+
+-->

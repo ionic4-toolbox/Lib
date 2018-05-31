@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>chip</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p style="background-color: red">基本用法</p>
+  <div>
+    <ion-chip>
+      <ion-label>默认</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-label color="secondary">二级标签</ion-label>
+    </ion-chip>
+    <ion-chip color="secondary">
+      <ion-label color="dark">二级深色标签</ion-label>
+    </ion-chip>
+    <ion-chip color="danger">
+      <ion-label>危险</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>默认</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="heart" color="dark"></ion-icon>
+      <ion-label>默认</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img src="assets/img/appicon.png">
+      </ion-avatar>
+      <ion-label>默认</ion-label>
+    </ion-chip>
+  </div>
+
+  <p style="background-color: red">高级用法</p>
+  <div>
+    <ion-chip #chip1>
+      <ion-label>默认</ion-label>
+      <button ion-button clear color="light" (click)="delete(chip1)">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-chip>
+
+    <ion-chip #chip2>
+      <ion-icon name="pin" color="primary"></ion-icon>
+      <ion-label>带图标</ion-label>
+      <button ion-button (click)="delete(chip2)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-chip>
+    <ion-chip #chip3>
+      <ion-avatar>
+        <img src="assets/img/avatar-leia.png">
+      </ion-avatar>
+      <ion-label>带头像</ion-label>
+      <button ion-button clear color="dark" (click)="delete(chip3)">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-chip>
+  </div>
+</ion-content>

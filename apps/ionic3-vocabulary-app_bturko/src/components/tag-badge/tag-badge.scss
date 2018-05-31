@@ -1,0 +1,30 @@
+ion-card img{
+  width: 80%;
+  margin: 0 10%;
+}
+@media (min-width: 960px) {
+  ion-card img{
+    margin: 0 25%;
+    width: 50%;
+  }
+}
+.header .col {
+  //background-color:lightgrey;
+  background: darkgrey;
+  color: white;
+  border: 1px #7d7676 solid;
+}
+
+.col {
+  border: solid 1px #ababab;
+  border-bottom-style: none;
+  border-right-style: none;
+}
+
+.col:last-child {
+  border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+  //border-bottom: solid 1px grey;
+}

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="preferences">
+    <ion-item-divider color="light">Preferences</ion-item-divider>
+    <ion-item>
+      <ion-icon name="flash" item-left></ion-icon>
+      <ion-label>
+        Automatic Recording
+        <button class="explain-button" ion-button icon-only clear small
+          (click)="explain('Starts and stops trips automatically while the app is running.')">
+          <ion-icon name="help-circle"></ion-icon>
+        </button>
+      </ion-label>
+      <ion-toggle [(ngModel)]="preferences.autoRecord"
+        (ionChange)="savePreferences()"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="profile">
+    <ion-item-divider color="light">
+      User Profile
+      <button class="explain-button" ion-button icon-only clear small
+        (click)="explain('Shared anonymously with local planners and officals for demographics purposes.')">
+        <ion-icon name="help-circle"></ion-icon>
+      </button>
+    </ion-item-divider>
+    <ion-item>
+      <ion-icon name="calendar" item-left></ion-icon>
+      <ion-label>
+        Age
+      </ion-label>
+      <ion-select [(ngModel)]="profile.age" (ionChange)="saveProfile()">
+        <ion-option *ngFor="let option of ageOptions"
+          [value]="option.value">{{option.label}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="people" item-left></ion-icon>
+      <ion-label>
+        Gender
+      </ion-label>
+      <ion-select [(ngModel)]="profile.gender" (ionChange)="saveProfile()">
+        <ion-option *ngFor="let option of genderOptions"
+          [value]="option.value">{{option.label}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="bicycle" item-left></ion-icon>
+      <ion-label>
+        Experience Level
+      </ion-label>
+      <ion-select [(ngModel)]="profile.cyclingExperience"
+          (ionChange)="saveProfile()">
+        <ion-option *ngFor="let option of experienceOptions"
+          [value]="option.value">{{option.label}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item-divider color="light">
+      About BikeMoves Illinois
+    </ion-item-divider>
+    <ion-item>
+      <ion-icon name="appstore" item-left></ion-icon>
+      Version: {{version}}
+    </ion-item>
+    <button ion-item icon-left (click)="openTutorial()">
+      <ion-icon name="help-circle" item-left></ion-icon>
+      Help
+    </button>
+    <button ion-item icon-left (click)="openTerms()">
+      <ion-icon name="information-circle" item-left></ion-icon>
+      User Agreement
+    </button>
+    <button ion-item icon-left (click)="openCredits()">
+      <ion-icon name="contacts" item-left></ion-icon>
+      Credits
+    </button>
+  </ion-list>
+</ion-content>

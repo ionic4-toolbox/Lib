@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Словарь</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngFor='let w of words; trackBy: category;'>
+     {{ w.text }} - {{ w.translation }}
+  </div>
+
+</ion-content>

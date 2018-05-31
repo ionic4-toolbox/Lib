@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>我们的英雄</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="selectedHero" style="background: red; color:white; text-align:center">
+    id：{{selectedHero.id}}，name：{{selectedHero.name}}
+  </div>
+
+  <ion-list class="heroes">
+    <li [class.selected]="hero === selectedHero"
+      ion-item
+      *ngFor="let hero of heroes"
+      (click)="onSelect(hero)">
+     <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Native Device Controls</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button (click)="showFingerPrintDailog()">Show Finger Print Dailog</button>
+
+  <button ion-button (click)="vibrate()">Vibrate Now</button>
+
+  <div *ngIf="results">
+    <p>
+      <strong>Text:</strong> {{results.text}}</p>
+    <p>
+      <strong>Format:</strong>{{results.format}}</p>
+    <p>
+      <strong>Cancelled:</strong> {{results.cancelled}}</p>
+  </div>
+
+  <ion-row>
+    <button ion-button (click)="scanBarcode()">Scan</button>
+    <button ion-button (click)="encodeData()">Encode</button>
+  </ion-row>
+
+  <ion-range min="10" max="100" step="10" [(ngModel)]="brightnessValue" (ionChange)=setBrightness()>
+    <ion-icon small range-left name="sunny"></ion-icon>
+    <ion-icon range-right name="sunny"></ion-icon>
+  </ion-range>
+
+  <ion-item>
+    <ion-label>Sleep Screen</ion-label>
+    <ion-toggle [(ngModel)]="screenSleep" (ionChange)=setKeepScreenOn()></ion-toggle>
+  </ion-item>
+
+  <button ion-fab color="{{isFlashOn ? 'danger' : 'light'}}" (click)="toggleFlashLight()">
+    <ion-icon ios="ios-flash-outline" md="md-flash"> </ion-icon>
+  </button>
+
+</ion-content>

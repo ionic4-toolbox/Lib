@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar autocomplete="on" placeholder="Address or postal code..." debounce=1000 (ionInput)="onInput($event)"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let place of places|async" (click)="openForecast(place)">
+      {{place.toString()}}
+    </ion-item>
+  </ion-list>
+</ion-content>

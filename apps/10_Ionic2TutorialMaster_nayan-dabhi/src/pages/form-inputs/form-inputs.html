@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>FormInputs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Inline Label</ion-label>
+      <ion-input type="text" placeholder="Text Input"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Fixed Label</ion-label>
+      <ion-input type="tel" placeholder="Tel Input"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="number" placeholder="Number Input with no label"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Stacked Input</ion-label>
+      <ion-input type="email" placeholder="Email Input"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Floating Input</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Clear Input" clearInput></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea rows="5" placeholder="Enter a description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-list padding>
+      <ion-item>
+        <ion-label>
+          <p>Start Date</p>
+        </ion-label>
+        <ion-datetime min="1990" max="2017" displayFormat="DD MMM, YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="event.startDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <p>End Date</p>
+        </ion-label>
+        <ion-datetime min="1990" max="2017" displayFormat="DDDD, DD MMM, YYYY" [(ngModel)]="event.endDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <p>Start Time</p>
+        </ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.startTime"></ion-datetime>
+      </ion-item>
+    </ion-list>
+
+    <ion-list padding radio-group [(ngModel)]="languages" (ionChange)="doChangeLang()">
+      <ion-list-header>
+        Language : {{languages}}
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Java</ion-label>
+        <ion-radio value="Java"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>PHP</ion-label>
+        <ion-radio value="Php"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>.NET</ion-label>
+        <ion-radio value="Dotnet"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Push Notification</ion-label>
+        <ion-toggle [(ngModel)]="pushNotify" (ionChange)="doChangeNotify()"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>SMS Notification</ion-label>
+        <ion-toggle [(ngModel)]="smsNotify" color="danger" (ionChange)="doChangeNotify()"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card padding>
+    <p>
+      <button ion-button round block color="danger" (click)="openPage('range')">
+        Range Input
+      </button>
+    </p>
+  </ion-card>
+
+</ion-content>

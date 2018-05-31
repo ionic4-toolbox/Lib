@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Image Gallary</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--
+  <ion-list *ngIf="images">
+    <ion-item *ngFor="let row of images">
+      <ion-card>
+        <ion-card-content>
+          <ion-img src="{{row}}"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  -->
+
+  <ion-grid>
+    <ion-row *ngFor="let row of grid">
+      <ion-col width-50 *ngFor="let file_uri of row">
+        <!-- <ion-card *ngIf="file_uri" text-center>
+          <ion-card-content> -->
+            <ion-img *ngIf="file_uri" src="{{file_uri}}"></ion-img>
+          <!-- </ion-card-content>
+        </ion-card> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

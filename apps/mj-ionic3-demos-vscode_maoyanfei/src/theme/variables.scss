@@ -1,0 +1,148 @@
+﻿// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons, roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// ---------------------------------------------------------------------------
+// Shared Variables
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+//-----------------------------------------------------------------------------
+$headings-font-weight: 300;
+$font-family-base: "Helvetica Neue", "Roboto", sans-serif;
+//$tabs-background: #ff0000;
+//$tabs-tab-color-active: #ffffff;
+//$tabs-tab-color-inactive: #8c8c8c;
+
+// ----------------------------------------------------------------------------------
+// Named Color Variables
+//命名颜色使得在各种组件上重用颜色变得很容易。强烈建议更改默认颜色以匹配自己的应用程序品牌。
+//Ionic使用Sass匹配“添加、重命名、删除”的颜色。注意"primary" 是唯一要求必须在此处指定的颜色。
+//-----------------------------------------------------------------------------------
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  favorite:   #69BB7B,
+  twitter:    #1da1f4,
+  google:     #dc4a38,
+  vimeo:      #23b6ea,
+  facebook:   #3b5998
+);
+
+
+// --------------------------------------------------
+// App iOS Variables
+// iOS only Sass variables can go here
+//---------------------------------------------------
+$font-family-ios-base: $font-family-base;
+$item-ios-detail-push-show:true; //item是否带有右箭头，ios默认true，md默认false，wp默认false
+$item-ios-detail-push-color:#dedede;
+$list-ios-border-color:#dedede;
+$toolbar-ios-background: color($colors, danger);
+$toolbar-ios-active-color: #fff;
+$toolbar-ios-title-text-align:left;  //默认center
+$toolbar-ios-height: 40px;  //工具栏高度，ios默认44px，md默认56px，wp默认46px
+$tabs-ios-tab-padding-top: 0;
+$tabs-ios-tab-padding-bottom: 0;
+$tabs-ios-tab-padding-end: 2px;
+$tabs-ios-tab-padding-start: 2px;
+$tabs-ios-tab-text-transition: transform .3s ease-in-out;
+$tabs-ios-tab-font-size: 10px;
+$tabs-ios-tab-icon-size: 30px;
+$toolbar-ios-button-font-size: 1.5rem;  //默认1.7rem 
+
+$toolbar-ios-title-font-size: 1.6rem;  //默认1.7rem
+$item-ios-body-text-font-size: 1.6rem;  //默认1.7rem
+
+$action-sheet-ios-button-font-size: 1.6rem; //默认2rem
+
+// -----------------------------------------------------
+// App Material Design Variables
+// Material Design only Sass variables can go here
+//-------------------------------------------------------
+$font-family-md-base: $font-family-base;
+$item-md-detail-push-show: true;
+$item-md-detail-push-color: #dedede;
+$list-md-border-color: #dedede;
+$toolbar-md-background: color($colors, danger);
+$toolbar-md-active-color: #fff;
+$toolbar-md-height: 40px;  //默认56px
+$tabs-md-tab-padding-top: 0;
+$tabs-md-tab-padding-bottom: 0;
+$tabs-md-tab-padding-end: 2px;
+$tabs-md-tab-padding-start: 2px;
+$tabs-md-tab-text-transition:  transform .3s ease-in-out;
+$tabs-md-tab-font-size: 10px;
+$tabs-md-tab-font-size-active: 10px;
+$tabs-md-tab-icon-size: 30px;
+$tabs-md-tab-min-height: 50px;
+$tabs-md-tab-icon-transform-y-active: 0;
+$tabs-md-tab-icon-bottom-transform-y-active: 0;
+$tabs-md-tab-icon-left-transform-x-active: 0;
+$tabs-md-tab-icon-right-transform-x-active: 0;
+$tabs-md-tab-text-transform-origin-y: 50%;
+
+$toolbar-md-title-font-size: 1.6rem; //默认：2rem
+$item-md-font-size: 1.6rem; //默认1.6rem
+
+$action-sheet-md-button-font-size:1.6rem;  //默认1.6rem
+
+// --------------------------------------------------
+// App Windows Variables
+// Windows only Sass variables can go here
+//---------------------------------------------------
+$font-family-wp-base: $font-family-base;
+$item-wp-detail-push-show: true;  
+$item-wp-detail-push-color: #dedede;
+$list-wp-border-color: #dedede;
+$toolbar-wp-background: color($colors, danger);
+$toolbar-wp-active-color: #fff;
+$toolbar-wp-height: 40px;
+$tabs-wp-tab-padding-top: 0;
+$tabs-wp-tab-padding-bottom: 0;
+$tabs-wp-tab-padding-end: 2px;
+$tabs-wp-tab-padding-start: 2px;
+$tabs-wp-tab-text-transition: transform .3s ease-in-out;
+$tabs-wp-tab-font-size: 10px;
+$tabs-wp-tab-icon-size: 30px;
+
+$tabs-wp-tab-text-capitalization: none;
+$toolbar-wp-title-text-transform: none;  //默认uppercase
+
+
+// -----------------------------------------------------------
+// App Theme
+//Ionic应用程序可以定制不同的主题。上面的Sass变量将覆盖Ionic的默认值
+//-------------------------------------------------------------
+@import "ionic.theme.default";
+
+
+// ------------------------------------------------------------
+// Ionicons
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+//-------------------------------------------------------------
+@import "ionic.ionicons";
+
+
+// --------------------------------------------------------------
+// Fonts
+// Roboto字体默认用于Material Design. Noto-sans字体默认用于Windows.
+//----------------------------------------------------------------
+@import "roboto";
+@import "noto-sans";

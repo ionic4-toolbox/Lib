@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Capture Image</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card text-center>
+    <ion-card-content>
+      <img [src]="imagePath" *ngIf="imagePath" (click)="openImageView()"/>
+    </ion-card-content>
+
+    <!--
+    <ion-item text-center padding>
+      <ion-icon name="camera" class="round-button" on-tap="openCameraActionSheet()"></ion-icon>
+      <p padding>Captured a Photo</p>
+    </ion-item>
+    -->
+
+  </ion-card>
+
+  <ion-fab right bottom on-tap="openCameraActionSheet()">
+    <button ion-fab>
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab *ngIf="showUpload" left bottom on-tap="uploadImage()">
+    <button ion-fab>
+      <ion-icon name="md-cloud-upload"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

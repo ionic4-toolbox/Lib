@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>button</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p style="background-color: red">用法1：基本用法</p>
+  <div>
+    <button ion-button color="light">Light</button>
+    <button ion-button>Default</button>
+    <button ion-button color="secondary">Secondary</button>
+    <button ion-button color="danger">Danger</button>
+    <button ion-button color="dark">Dark</button>
+  </div>
+
+  <p style="background-color: red">用法2：block</p>
+  <div>
+    <button ion-button color="light" block>Light</button>
+    <button ion-button block>Default</button>
+    <button ion-button color="secondary" block>Secondary</button>
+    <button ion-button color="danger" block>Danger</button>
+    <button ion-button color="dark" block>Dark</button>
+  </div>
+
+  <p style="background-color: red">用法3：clear</p>
+  <div>
+    <button ion-button color="light" clear>Light</button>
+    <button ion-button clear>Default</button>
+    <button ion-button color="secondary" clear>Secondary</button>
+    <button ion-button color="danger" clear>Danger</button>
+    <button ion-button color="dark" clear>Dark</button>
+  </div>
+
+  <p style="background-color: red">用法4：components</p>
+  <div class="commponents">
+    <ion-navbar>
+      <ion-buttons start>
+        <button ion-button icon-only>
+              <ion-icon name='contact'></ion-icon>
+            </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button icon-only>
+                <ion-icon name='search'></ion-icon>
+            </button>
+      </ion-buttons>
+    </ion-navbar>
+    <ion-card>
+      <ion-card-content>
+        <img src="assets/img/img-icon.png" />
+      </ion-card-content>
+      <ion-item>
+        <button ion-button clear item-start>Like</button>
+        <button ion-button clear item-end>Comment</button>
+      </ion-item>
+    </ion-card>
+    <ion-list>
+      <ion-item>
+        Inner Button
+        <button ion-button item-end outline>Outline</button>
+      </ion-item>
+      <ion-item>
+        Left Icon Button
+        <button ion-button item-end outline icon-left>
+          <ion-icon name='star'></ion-icon>
+          Left Icon
+        </button>
+      </ion-item>
+      <ion-item>
+        Right Icon Button
+        <button ion-button item-end outline icon-right>
+          Right Icon
+          <ion-icon name='star'></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <p style="background-color: red">用法5：full</p>
+  <div>
+    <button ion-button color="light" full>Light</button>
+    <button ion-button full>Default</button>
+    <button ion-button color="secondary" full>Secondary</button>
+    <button ion-button color="danger" full>Danger</button>
+    <button ion-button color="dark" full>Dark</button>
+  </div>
+
+  <p style="background-color: red">用法6：icons</p>
+  <div>
+    <p>
+      <button ion-button color="light" icon-left>
+        <ion-icon name='arrow-back'></ion-icon>
+        Back
+      </button>
+      <button ion-button color="light" icon-only>
+        <ion-icon name='arrow-down'></ion-icon>
+      </button>
+      <button ion-button color="light" icon-only>
+        <ion-icon name='arrow-up'></ion-icon>
+      </button>
+      <button ion-button color="light" icon-right>
+        Next
+        <ion-icon name='arrow-forward'></ion-icon>
+      </button>
+    </p>
+    <p>
+      <button ion-button icon-left>
+        <ion-icon name='home'></ion-icon>
+        Home
+      </button>
+      <button ion-button outline icon-left>
+        <ion-icon name='briefcase' is-active="false"></ion-icon>
+        Work
+      </button>
+      <button ion-button clear icon-left>
+        <ion-icon name='beer' is-active="false"></ion-icon>
+        Pub
+      </button>
+    </p>
+    <p>
+      <button ion-button color="secondary" icon-left>
+        <ion-icon name='people'></ion-icon>
+        Friends
+      </button>
+      <button ion-button color="secondary" outline icon-left>
+        <ion-icon name='paw' is-active="false"></ion-icon>
+        Best Friend
+      </button>
+    </p>
+    <p>
+      <button ion-button color="danger" icon-left>
+        <ion-icon name='close'></ion-icon>
+        Remove
+      </button>
+      <button ion-button color="danger" outline icon-only>
+        <ion-icon name='remove-circle' is-active="false"></ion-icon>
+      </button>
+      <button ion-button color="danger" clear icon-only>
+        <ion-icon name='trash' is-active="false"></ion-icon>
+      </button>
+    </p>
+    <p>
+      <button ion-button color="dark" round icon-left>
+        <ion-icon name='construct' is-active="false"></ion-icon>
+        Tools
+      </button>
+      <button ion-button color="dark" clear icon-only>
+        <ion-icon name='hammer' is-active="false"></ion-icon>
+      </button>
+    </p>
+  </div>
+
+  <p style="background-color: red">用法7：outline</p>
+  <div>
+    <button ion-button color="light" outline>Light</button>
+    <button ion-button outline>Default</button>
+    <button ion-button color="secondary" outline>Secondary</button>
+    <button ion-button color="danger" outline>Danger</button>
+    <button ion-button color="dark" outline>Dark</button>
+  </div>
+
+  <p style="background-color: red">用法8：round</p>
+  <div>
+    <button ion-button color="light" round>Light</button>
+    <button ion-button round>Default</button>
+    <button ion-button color="secondary" round>Secondary</button>
+    <button ion-button color="danger" round>Danger</button>
+    <button ion-button color="dark" round>Dark</button>
+  </div>
+
+  <p style="background-color: red">用法9：sizes</p>
+  <div>
+    <button ion-button color="light" small>Light Small</button>
+    <button ion-button small>Default Small</button>
+    <button ion-button color="secondary">Secondary Medium</button>
+    <button ion-button color="danger" medium>Danger Medium</button>
+    <button ion-button color="dark" large>Dark Large</button>
+  </div>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p>
+    <button ion-button round (click)="openPage('StaticListPage')">Static List</button>
+  </p>
+
+  <p>
+    <button ion-button round color="light" (click)="openPage('ListHttpPage')">Http List</button>
+  </p>
+
+  <p>
+    <button ion-button round (click)="openPage('ListHttpRefreshPage')">Http List With Pull & Infinite Refresh</button>
+  </p>
+
+</ion-content>

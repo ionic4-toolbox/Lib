@@ -1,0 +1,48 @@
+/*
+  ios 	    ios Viewing on an iphone, ipad, or ipod will use the iOS styles.
+  android 	md 	Viewing on any android device will use the Material Design styles.
+  windows 	wp 	Viewing on any windows device inside cordova or electron uses the Windows styles.
+  core     	md 	Any platform that doesn’t fit any of the above platforms will use the Material Design styles.
+ */
+
+.ios, .md, .wp {
+
+  page-events {
+
+    .content {
+      color: black;
+    }
+
+    .month {
+      font-size: 1.8rem;
+      color: red;
+    }
+
+    .day {
+      font-size: 1.6rem;
+      color: black;
+    }
+
+    .fab-container {
+      position: relative;
+    }
+
+    .event-name {
+      padding-top: 8px;
+    }
+
+    .event-location {
+      padding-top: 6px;
+    }
+
+  }
+
+}
+
+/*
+
+  .card p {
+    font-size: 1.4rem;
+  }
+
+*/

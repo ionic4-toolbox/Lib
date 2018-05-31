@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ch0106-dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/ch0106-dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/ch0106-heroes" routerLinkActive="active">Heroes</a>
+  </nav>
+  <router-outlet>
+    <h3>Top Heroes</h3>
+    <!-- <div class="grid grid-pad">
+      <a *ngFor="let hero of heroes" [routerLink]="['/ch0106-hero-detail', hero.id]" class="col-1-4">
+        <div class="module hero">
+          <h4>{{hero.name}}</h4>
+        </div>
+      </a>
+    </div> -->
+  </router-outlet>
+</ion-content>

@@ -1,0 +1,395 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>card</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p style="background-color: red">用法1：基本用法</p>
+  <div class="cards-bg">
+    <ion-card>
+      <ion-card-content>
+        This is just your basic card with some text to boot. Like it? Keep scrolling...
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法2：Card Headers</p>
+  <div class="cards-bg">
+    <ion-card>
+      <ion-card-header>
+        Header
+      </ion-card-header>
+      <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法3：Card Lists</p>
+  <div class="cards-bg">
+    <ion-card class="cards-list-demo">
+      <ion-card-header>
+        Explore Nearby
+      </ion-card-header>
+      <ion-list>
+        <button ion-item>
+          <ion-icon name='cart' item-start></ion-icon>
+          Shopping
+        </button>
+        <button ion-item>
+          <ion-icon name='medical' item-start></ion-icon>
+          Hospital
+        </button>
+        <button ion-item>
+          <ion-icon name='cafe' item-start></ion-icon>
+          Cafe
+        </button>
+        <button ion-item>
+          <ion-icon name='paw' item-start></ion-icon>
+          Dog Park
+        </button>
+        <button ion-item>
+          <ion-icon name='beer' item-start></ion-icon>
+          Pub
+        </button>
+        <button ion-item>
+          <ion-icon name='planet' item-start></ion-icon>
+          Space
+        </button>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法4：Card Images</p>
+  <div class="cards-bg">
+    <ion-card>
+      <img src="assets/img/nin-live.png" />
+      <ion-card-content>
+        <ion-card-title> Nine Inch Nails Live </ion-card-title>
+        <p>
+          The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+        </p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='star'></ion-icon>喜欢
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='musical-notes'></ion-icon>试听
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='share-alt'></ion-icon>共享
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <div>
+        <img src="assets/img/badu-live.png" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>Erykah Badu</ion-card-title>
+        <p>
+          American singer-songwriter, record producer, activist, and actress, Badu's style is a prime example of neo-soul.
+        </p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='star'></ion-icon>喜欢
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='musical-notes'></ion-icon>试听
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='share-alt'></ion-icon>共享
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <div>
+        <img src="assets/img/queen-live.png" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>Queen</ion-card-title>
+        <p>
+          The British rock band formed in London in 1970, and is considered one of the biggest stadium rock bands in the world.
+        </p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='star'></ion-icon>喜欢
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='musical-notes'></ion-icon>试听
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='share-alt'></ion-icon>共享
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <div>
+        <img src="assets/img/rundmc-live.png" />
+      </div>
+      <ion-card-content>
+        <ion-card-title>Run-D.M.C.</ion-card-title>
+        <p>
+          The American hip hop group widely acknowledged as one of the most influential acts in the history of hip hop.
+        </p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='star'></ion-icon>喜欢
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='musical-notes'></ion-icon>试听
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left>
+            <ion-icon name='share-alt'></ion-icon>共享
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法5：Background Images</p>
+  <div class=".card-background">
+    <ion-card>
+      <img src="assets/img/card-saopaolo.png" />
+      <div class="card-title">São Paulo</div>
+      <div class="card-subtitle">41 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="assets/img/card-amsterdam.png" />
+      <div class="card-title">Amsterdam</div>
+      <div class="card-subtitle">64 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="assets/img/card-sf.png" />
+      <div class="card-title">San Francisco</div>
+      <div class="card-subtitle">72 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="assets/img/card-madison.png" />
+      <div class="card-title">Madison</div>
+      <div class="card-subtitle">28 Listings</div>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法6(高级)：Social Cards</p>
+  <div class="cards-bg social-cards">
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/img/marty-avatar.png">
+        </ion-avatar>
+        <h2>Marty McFly</h2>
+        <p>November 5, 1955</p>
+      </ion-item>
+      <img src="assets/img/advance-card-bttf.png">
+      <ion-card-content>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa.
+          This is heavy.</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='thumbs-up'></ion-icon>
+            12 Likes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='text'></ion-icon>
+            4 Comments
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/img/sarah-avatar.png.jpeg">
+        </ion-avatar>
+        <h2>Sarah Connor</h2>
+        <p>May 12, 1984</p>
+      </ion-item>
+      <img src="assets/img/advance-card-tmntr.jpg">
+      <ion-card-content>
+        <p>I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life,
+          maybe we can too.</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='thumbs-up'></ion-icon>
+            30 Likes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='text'></ion-icon>
+            64 Comments
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <ion-note>
+            30yr ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/img/ian-avatar.png">
+        </ion-avatar>
+        <h2>Dr. Ian Malcolm</h2>
+        <p>June 28, 1990</p>
+      </ion-item>
+      <img src="assets/img/advance-card-jp.jpg">
+      <ion-card-content>
+        <p>Your scientists were so preoccupied with whether or not they could, that they didn't stop to think if they should.</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='thumbs-up'></ion-icon>
+            46 Likes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button color="primary" clear small icon-left>
+            <ion-icon name='text'></ion-icon>
+            66 Comments
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <ion-note>
+            2d ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <p style="background-color: red">用法7(高级)：Map Cards</p>
+  <div class="cards-bg">
+    <ion-card class="adv-map">
+      <div style="position: relative">
+        <img src="assets/img/advance-card-map-madison.png">
+        <ion-fab right top>
+          <button ion-fab class="fab-map">
+            <ion-icon name='pin'></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='football'></ion-icon>
+        <h2>Museum of Football</h2>
+        <p>11 N. Way St, Madison, WI 53703</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='wine'></ion-icon>
+        <h2>Institute of Fine Cocktails</h2>
+        <p>14 S. Hop Avenue, Madison, WI 53703</p>
+      </ion-item>
+      <ion-item actions>
+        <span ion-text item-start color="secondary" class="item-bold">18 min</span>
+        <span ion-text item-start color="subtle">(2.6 mi)</span>
+        <button ion-button color="primary" clear item-end icon-left>
+          <ion-icon name='navigate'></ion-icon>
+          Start
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card class="adv-map">
+      <div style="position: relative">
+        <img src="assets/img/advance-card-map-mario.png">
+
+        <ion-fab right top>
+          <button ion-fab color="danger" class="fab-map">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='cloud'></ion-icon>
+        <h2>Yoshi's Island</h2>
+        <p>Iggy Koopa</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='leaf'></ion-icon>
+        <h2>Forest of Illusion</h2>
+        <p>Roy Koopa</p>
+      </ion-item>
+      <ion-item actions>
+        <span ion-text item-start class="item-bold">3 hr</span>
+        <span ion-text item-start color="subtle">(4.8 mi)</span>
+        <button ion-button color="danger" clear item-end icon-left>
+          <ion-icon name='navigate'></ion-icon>
+          Start
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card class="adv-map">
+      <div style="position: relative">
+        <img src="assets/img/advance-card-map-paris.png">
+        <ion-fab right top>
+          <button ion-fab color="secondary">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='information-circle'></ion-icon>
+        <h2>Museum of Information</h2>
+        <p>44 Rue de Info, 75010 Paris, France</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="subtle" large item-start name='leaf'></ion-icon>
+        <h2>General Pharmacy</h2>
+        <p>1 Avenue Faux, 75010 Paris, France</p>
+      </ion-item>
+      <ion-item actions>
+        <span ion-text item-start color="secondary" class="item-bold">26 min</span>
+        <span ion-text item-start color="subtle">(8.1 mi)</span>
+        <button ion-button color="secondary" clear item-end icon-left>
+          <ion-icon name='navigate'></ion-icon>
+          Start
+        </button>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

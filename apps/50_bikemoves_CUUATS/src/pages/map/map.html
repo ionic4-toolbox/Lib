@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="{{ (isReporting()) ? 'primary' : 'light' }}">
+    <ion-title>
+      <span class="heading-stopped" *ngIf="isStopped()" (press)="geo.debugMotion()">Stopped</span>
+      <span class="heading-recording" *ngIf="isRecording()">Recording</span>
+      <span class="heading-reporting" *ngIf="isReporting()">Tap a Location</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-left *ngIf="isReporting()"
+        (click)="stopReporting()">
+        <ion-icon name="close"></ion-icon>
+        Cancel
+      </button>
+      <button ion-button icon-left color="danger"
+        *ngIf="isStopped() && !geo.highAccuracy"
+        (click)="geo.requestAccuracy()">
+        <ion-icon name="alert"></ion-icon>
+        GPS
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-left *ngIf="isStopped()"
+        (click)="startRecording()" [disabled]="stateChangePending">
+        <ion-icon name="bicycle"></ion-icon>
+        <span *ngIf="!stateChangePending">Start</span>
+        <span *ngIf="stateChangePending">Starting</span>
+      </button>
+      <button ion-button icon-only *ngIf="isStopped()" (click)="showLegend()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+      <button ion-button icon-left *ngIf="isRecording()"
+        (click)="stopRecording()" [disabled]="stateChangePending">
+        <ion-icon name="checkmark"></ion-icon>
+        <span *ngIf="!stateChangePending">Stop</span>
+        <span *ngIf="stateChangePending">Stopping</span>
+      </button>
+      <button ion-button icon-left *ngIf="isReporting()"
+        (click)="showIncidentForm()" [disabled]="!incidentLocation">
+        <ion-icon name="checkmark"></ion-icon>
+        OK
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div id="map" ion-fixed></div>
+  <div id="trip-stats" ion-fixed *ngIf="isRecording()">
+    <span class="activity">
+      <ion-icon name="remove" *ngIf="isStill()"></ion-icon>
+      <ion-icon name="walk" *ngIf="isOnFoot()"></ion-icon>
+      <ion-icon name="bicycle" *ngIf="isOnBicycle()"></ion-icon>
+      <ion-icon name="car" *ngIf="isInVehicle()"></ion-icon>
+      <ion-icon name="help" *ngIf="isUnknownActivity()"></ion-icon>
+    </span>
+    <span class="duration"><ion-icon name="stopwatch"></ion-icon> {{ stats.formatDuration() }}</span>
+    <span class="distance"><ion-icon name="pin"></ion-icon> {{ stats.formatDistance() }} mi</span>
+  </div>
+  <ion-fab top right>
+    <button ion-fab color="primary" *ngIf="isStopped()"
+      (click)='startReporting()'>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

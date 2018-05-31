@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title text>
+            Cards
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let card of cards">
+
+        <ion-item>
+            <ion-avatar item-left>
+                <img [src]="card.foto">
+            </ion-avatar>
+            <h2>{{card.nome}}</h2>
+            <p>Telefone: {{card.telefonePrincipal}}</p>
+        </ion-item>
+
+        <img [src]="card.cardFoto" alt="">
+
+        <ion-card-content>
+            <p>{{card.biografia}}</p>
+        </ion-card-content>
+
+    </ion-card>
+
+</ion-content>

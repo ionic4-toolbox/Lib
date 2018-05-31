@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			Sem conexão
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div class="content-app">
+		<p class="msg-error">
+			Não foi possível conectar a sua rede.
+		</p>
+		<p class="desc-error">
+			Você não está conectado à internet. Verifique sua conexão e tente novamente.
+		</p>
+		<div class="box-buttons">
+      <button ion-button (click)="retry()">
+        <span>TENTAR NOVAMENTE</span>
+      </button>
+			<button *ngIf="!isIos" (click)="settings()" ion-button>
+        <span>CONFIGURAR REDE</span>
+      </button>
+    </div>
+	</div>
+</ion-content>

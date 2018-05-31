@@ -1,0 +1,301 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ meal.time }} meal{{ isDirty ? '*' : ''}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="saveMeal()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="removeMeal()">
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="mealDetails">
+            <ion-segment-button value="details">
+                <ion-icon name="create"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="items">
+                <ion-icon name="basket"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="warnings">
+                <ion-icon color="{{meal.warnings?.length ? 'danger' : ''}}" name="warning"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="nutrition">
+                <ion-icon name="nutrition"></ion-icon>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-fab bottom right *ngIf="mealDetails === 'items'">
+        <button ion-fab color="secondary" (click)="addMealItems()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
+    <div [ngSwitch]="mealDetails">
+
+        <!-- Start of segment -->
+        <div *ngSwitchCase="'details'">
+            <ion-list>
+                <ion-item text-wrap>
+                    <h2>PRAL</h2>
+                    <ion-icon color="{{meal.pral > 0 ? 'danger' : 'secondary'}}" name="{{meal.pral > 0 ? 'thumbs-down' : 'thumbs-up'}}" item-right></ion-icon>
+                    <p item-right ion-text color="{{ meal.pral > 0 ? 'danger' : 'secondary' }}">{{ meal.pral > 0 ? 'Acid forming' : 'Alkaline forming'}}</p>
+                </ion-item>
+                <ion-item text-wrap>
+                    <h2>Size</h2>
+                    <ion-icon color="{{meal.quantity > 1000 ? 'danger' : 'secondary'}}" name="{{meal.quantity > 1000 ? 'thumbs-down' : 'thumbs-up'}}"
+                        item-right></ion-icon>
+                    <p item-right ion-text color="{{ meal.quantity > 1000 ? 'danger' : 'secondary' }}">{{ meal.quantity }} g</p>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Meal time</ion-label>
+                    <ion-datetime displayFormat="hh:mm a" pickerFormat="hh mm a" [(ngModel)]="meal.time" (ionChange)="markDirty()"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Favourite</ion-label>
+                    <ion-toggle [(ngModel)]="meal.favourite" (ionChange)="toggleFavourite()"></ion-toggle>
+                </ion-item>
+                <ion-item *ngIf="meal.favourite" text-wrap>
+                    <ion-label floating>Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="meal.favouriteName" (change)="markDirty()"></ion-input>
+                </ion-item>
+            </ion-list>
+        </div>
+        <!-- End of segment -->
+
+        <!-- Start of segment -->
+        <div *ngSwitchCase="'items'">
+            <ion-list>
+                <button ion-item *ngFor="let item of meal.mealItems; let i = index" (click)="changeItem(i)">
+                    <h2 text-wrap>{{ item.name }}</h2>
+                    <p text-wrap>{{ item.quantity * item.servings }}{{ item.unit }}</p>
+                    <p item-content>{{ item.servings }} servings</p>
+                </button>
+            </ion-list>
+        </div>
+        <!-- End of segment -->
+
+        <!-- Start of segment -->
+        <div *ngSwitchCase="'warnings'">
+            <ion-list>
+                <ion-item *ngFor="let warning of meal.warnings">
+                    <ion-icon color="danger" name="warning" item-left></ion-icon>
+                    <h2 text-wrap>{{ warning.message }}</h2>
+                    <p text-wrap>{{ warning.moreInfo }}</p>
+                </ion-item>
+            </ion-list>
+        </div>
+        <!-- End of segment -->
+
+        <!-- Start of segment -->
+        <div *ngSwitchCase="'nutrition'">
+            <ion-item-group>
+                <ion-item>
+                    Energy
+                    <p item-right>{{ meal.nutrition.energy?.value }} {{ meal.nutrition.energy?.unit }}</p>
+                </ion-item>
+                <ion-item-divider>Macronutrients</ion-item-divider>
+                <ion-item>
+                    Protein
+                    <p item-right>{{ meal.nutrition.protein?.value }} {{ meal.nutrition.protein?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Fats
+                    <p item-right>{{ meal.nutrition.fats?.value }} {{ meal.nutrition.fats?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Carbohydrates
+                    <p item-right>{{ meal.nutrition.carbs?.value }} {{ meal.nutrition.carbs?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Fiber
+                    <p item-right>{{ meal.nutrition.fiber?.value }} {{ meal.nutrition.fiber?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Water
+                    <p item-right>{{ meal.nutrition.water?.value }} {{ meal.nutrition.water?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                <ion-item-divider>Essential amino acids</ion-item-divider>
+                <ion-item>
+                    Histidine
+                    <p item-right>{{ meal.nutrition.histidine?.value }} {{ meal.nutrition.histidine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Isoleucine
+                    <p item-right>{{ meal.nutrition.isoleucine?.value }} {{ meal.nutrition.isoleucine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Leucine
+                    <p item-right>{{ meal.nutrition.leucine?.value }} {{ meal.nutrition.leucine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Lysine
+                    <p item-right>{{ meal.nutrition.lysine?.value }} {{ meal.nutrition.lysine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Methionine
+                    <p item-right>{{ meal.nutrition.methionine?.value }} {{ meal.nutrition.methionine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Phenylalanine
+                    <p item-right>{{ meal.nutrition.phenylalanine?.value }} {{ meal.nutrition.phenylalanine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Threonine
+                    <p item-right>{{ meal.nutrition.threonine?.value }} {{ meal.nutrition.threonine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Tryptophan
+                    <p item-right>{{ meal.nutrition.tryptophan?.value }} {{ meal.nutrition.tryptophan?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                <ion-item-divider>Essential vitamins</ion-item-divider>
+                <ion-item>
+                    Vitamin A
+                    <p item-right>{{ meal.nutrition.vitaminA?.value }} {{ meal.nutrition.vitaminA?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B1 (Thiamine)
+                    <p item-right>{{ meal.nutrition.vitaminB1?.value }} {{ meal.nutrition.vitaminB1?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B2 (Riboflavin)
+                    <p item-right>{{ meal.nutrition.vitaminB2?.value }} {{ meal.nutrition.vitaminB2?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B3 (Niacin)
+                    <p item-right>{{ meal.nutrition.vitaminB3?.value }} {{ meal.nutrition.vitaminB3?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B5 (Pantothenic acid)
+                    <p item-right>{{ meal.nutrition.vitaminB5?.value }} {{ meal.nutrition.vitaminB5?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B6 (Pyridoxine)
+                    <p item-right>{{ meal.nutrition.vitaminB6?.value }} {{ meal.nutrition.vitaminB6?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B9 (Folate)
+                    <p item-right>{{ meal.nutrition.vitaminB9?.value }} {{ meal.nutrition.vitaminB9?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin B12 (Cobalamin)
+                    <p item-right>{{ meal.nutrition.vitaminB12?.value }} {{ meal.nutrition.vitaminB12?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Choline
+                    <p item-right>{{ meal.nutrition.choline?.value }} {{ meal.nutrition.choline?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin C (Ascorbic acid)
+                    <p item-right>{{ meal.nutrition.vitaminC?.value }} {{ meal.nutrition.vitaminC?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin D (Cholecalciferol)
+                    <p item-right>{{ meal.nutrition.vitaminD?.value }} {{ meal.nutrition.vitaminD?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin E (Tocopherol)
+                    <p item-right>{{ meal.nutrition.vitaminE?.value }} {{ meal.nutrition.vitaminE?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Vitamin K
+                    <p item-right>{{ meal.nutrition.vitaminK?.value }} {{ meal.nutrition.vitaminK?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                <ion-item-divider>Essential minerals</ion-item-divider>
+                <ion-item>
+                    Calcium
+                    <p item-right>{{ meal.nutrition.calcium?.value }} {{ meal.nutrition.calcium?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Copper
+                    <p item-right>{{ meal.nutrition.copper?.value }} {{ meal.nutrition.copper?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Iron
+                    <p item-right>{{ meal.nutrition.iron?.value }} {{ meal.nutrition.iron?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Magnesium
+                    <p item-right>{{ meal.nutrition.magnesium?.value }} {{ meal.nutrition.magnesium?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Manganese
+                    <p item-right>{{ meal.nutrition.manganese?.value }} {{ meal.nutrition.manganese?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Phosphorus
+                    <p item-right>{{ meal.nutrition.phosphorus?.value }} {{ meal.nutrition.phosphorus?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Potassium
+                    <p item-right>{{ meal.nutrition.Potassium?.value }} {{ meal.nutrition.Potassium?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Selenium
+                    <p item-right>{{ meal.nutrition.selenium?.value }} {{ meal.nutrition.selenium?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Sodium
+                    <p item-right>{{ meal.nutrition.sodium?.value }} {{ meal.nutrition.sodium?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Zinc
+                    <p item-right>{{ meal.nutrition.zinc?.value }} {{ meal.nutrition.zinc?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                <ion-item-divider>Essential fatty acids</ion-item-divider>
+                <ion-item>
+                    Omega-3 (ALA)
+                    <p item-right>{{ meal.nutrition.ala?.value }} {{ meal.nutrition.ala?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Omega-3 (DHA)
+                    <p item-right>{{ meal.nutrition.dha?.value }} {{ meal.nutrition.dha?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Omega-3 (EPA)
+                    <p item-right>{{ meal.nutrition.epa?.value }} {{ meal.nutrition.epa?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Omega-6 (LA)
+                    <p item-right>{{ meal.nutrition.la?.value }} {{ meal.nutrition.la?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+                <ion-item-divider>Non-essential nutrients</ion-item-divider>
+                <ion-item>
+                    Alcohol
+                    <p item-right>{{ meal.nutrition.alcohol?.value }} {{ meal.nutrition.alcohol?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Caffeine
+                    <p item-right>{{ meal.nutrition.caffeine?.value }} {{ meal.nutrition.caffeine?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Trans fat
+                    <p item-right>{{ meal.nutrition.transFat?.value }} {{ meal.nutrition.transFat?.unit }}</p>
+                </ion-item>
+                <ion-item>
+                    Sugars
+                    <p item-right>{{ meal.nutrition.sugars?.value }} {{ meal.nutrition.sugars?.unit }}</p>
+                </ion-item>
+            </ion-item-group>
+        </div>
+        <!-- End of segment -->
+    </div>
+</ion-content>

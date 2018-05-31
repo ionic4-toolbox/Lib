@@ -1,0 +1,23 @@
+<ion-card>
+
+  <img src="assets/imgs/animals.png"/>
+
+  <ion-card-content>
+    <ion-card-title>
+      Запомните следующие слова:
+    </ion-card-title>
+
+    <div class="row header">
+      <div class="col">Слово</div>
+      <div class="col">Перевод</div>
+    </div>
+    <div class="row" *ngFor="let w of currWords">
+      <div class="col">{{w.text}}</div>
+      <div class="col">{{w.translation}}</div>
+    </div>
+
+    <button ion-button (click)="start()">Готов!</button>
+  </ion-card-content>
+
+</ion-card>
+

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar class="posts-page-navbar" color="primary" text-center>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{ subreddit ? '/r/' + subreddit : 'Твой Английский Словарь' }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-menu class="side-menu" type="overlay" [content]="postsList">
+
+
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Choose</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-item>
+      <ion-avatar item-left>
+        <ion-img [src]="image"></ion-img>
+      </ion-avatar>
+    </ion-item>
+  </ion-content>
+
+</ion-menu>
+
+<ion-content #postsList padding>
+  <ion-card class="cards-list-demo">
+    <ion-card-header>
+      Меню
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item *ngFor="let item of menuItems" (click)="openNavDetailsPage(item)" icon-start>
+        <ion-icon [name]="'md-' + item.icon" [ngStyle]="{'color': item.color}" item-start></ion-icon>
+        {{ item.title }}
+      </button>
+    </ion-list>
+
+  </ion-card>
+</ion-content>

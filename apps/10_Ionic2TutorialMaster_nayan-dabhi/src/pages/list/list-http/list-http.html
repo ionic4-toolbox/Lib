@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button icon-only end *ngIf="!showSearchBar" (click)="onBackPressed()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-searchbar *ngIf="showSearchBar"
+      animated="true"
+      showCancelButton="true"
+      placeholder="Search By FirstName, LastName Or Email"
+      (ionInput)="searchData($event)"
+      (ionCancel)="onSearchCancel()"></ion-searchbar>
+
+    <ion-title *ngIf="!showSearchBar">Http List Demo</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only end (click)="onClickSearchIcon()" *ngIf="!showSearchBar">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let person of persons" (click)="openDetailPage(person)">
+      <ion-avatar item-left>
+        <img src="{{person.picture.thumbnail}}">
+      </ion-avatar>
+
+      <h2>{{person.name.first}} {{person.name.last}}</h2>
+      <p>{{person.email}}</p>
+
+      <!-- <ion-badge item-end>{{count}}</ion-badge> -->
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

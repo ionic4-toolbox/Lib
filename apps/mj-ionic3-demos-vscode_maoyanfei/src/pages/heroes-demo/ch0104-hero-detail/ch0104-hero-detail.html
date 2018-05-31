@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>我们的英雄</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <div *ngIf="hero">
+      <h2>{{hero.name}} 的详细信息</h2>
+      <div><label>id: </label>{{hero.id}}</div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="hero.name" placeholder="请输入姓名"/>
+      </div>
+    </div>
+  </ion-content>
+  

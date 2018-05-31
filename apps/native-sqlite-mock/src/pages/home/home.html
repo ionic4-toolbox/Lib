@@ -1,0 +1,16 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>
+			SQLite Mock
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<button ion-button (click)="insertInvoice()">Insert Invoice</button>
+	<ion-list>
+		<ion-item *ngFor="let invoice of invoices">
+			{{ invoice.name }}
+		</ion-item>
+	</ion-list>
+</ion-content>

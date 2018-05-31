@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="auth-page" padding>
+    <img src="assets/icon/favicon.ico" class="auth-page__image">
+    <h1 class="auth-page__title">Welcome back!</h1>
+    <p class="auth-page__subtitle">Moderation is the key to perfection</p>
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+      <ion-list no-lines>
+        <ion-item class="auth-form__group">
+          <ion-label floating for="email">Email</ion-label>
+          <ion-input type="email" id="email" formControlName="email"></ion-input>
+        </ion-item>
+        <error-message [control]="email"></error-message>
+        <ion-item class="auth-form__group">
+          <ion-label floating for="password">Password</ion-label>
+          <ion-input type="password" id="password" formControlName="password"></ion-input>
+        </ion-item>
+        <error-message [control]="password"></error-message>
+        <br>
+        <button class="auth-page__button" ion-button block type="submit" [disabled]="loginForm.invalid">Login</button>
+        <div class="auth-page__links">
+          <button type="button" navPop ion-button clear>Sign Up</button>
+          <button type="button" [navPush]="forgotPasswordPage" ion-button clear>Forgot Password?</button>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

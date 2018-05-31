@@ -1,0 +1,34 @@
+<div class='top-nav'>
+    <mat-toolbar color="primary">
+        <mat-icon color="accent">shopping_cart</mat-icon>
+        <span> Procurement Activity </span>
+        <span class="mat-toolbar-spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button [routerLink]="['/home']" mat-menu-item>
+                <!--<span class='glyphicon glyphicon-home'></span> Home-->
+                <mat-icon>cake</mat-icon>
+                <span>Home</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/samurai']">
+                <mat-icon>face</mat-icon>
+                <span>Samurai</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/fetch-data']">
+                <mat-icon>storage</mat-icon>
+                <span>Fetch data</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/products']">
+                <mat-icon>devices_other</mat-icon>
+                <span>Products</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/sensors']">
+                <mat-icon>devices_other</mat-icon>
+                <span>Sensors</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+</div>
+

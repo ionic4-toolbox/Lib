@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Recipes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only padding (click)="addIngredientFilter()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="!!queryIngredients.length" padding>
+    <h2>
+      Filter ingredients:
+    </h2>
+    <button ion-button icon-right *ngFor="let ingredient of queryIngredients; let i = index" (click)="removeQueryIngredient(i)">
+      {{ ingredient }}
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+  <ion-searchbar debounce="2000" placeholder="Search recipes" [(ngModel)]="searchQuery" (ionCancel)="clearSearch($event)">
+  </ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-lg-4 col-md-6 *ngFor="let recipe of recipes | itemsFilter: 'ingredients': queryIngredients | search: searchQuery: limit">
+        <ion-card class="recipe-card" [navPush]="detailsPage" [navParams]="{ recipe: recipe }">
+          <ion-item>
+            <ion-avatar item-left>
+              <img [src]="recipe.chefAvatar">
+            </ion-avatar>
+            <h2>{{ recipe.name }}</h2>
+            <p>Made by {{ recipe.chef }}</p>
+          </ion-item>
+
+          <img [src]="recipe.image">
+
+          <ion-card-content>
+            <ion-list>
+              <ion-list-header>
+                Ingredients
+              </ion-list-header>
+              <ion-item *ngFor="let ingredient of recipe.ingredients.slice(0, 5)">
+                <h2 text-wrap>{{ ingredient.name }}</h2>
+                <ion-note item-right>
+                  {{ ingredient.quantity * ingredient.servings }}{{ ingredient.unit }}
+                </ion-note>
+              </ion-item>
+              <button ion-item *ngIf="recipe.ingredients.length > 5">
+                 {{ recipe.ingredients.length - 5 }} more
+                 <ion-note item-right>
+                  <ion-icon item-right name="arrow-forward"></ion-icon>
+                </ion-note>
+               </button>
+            </ion-list>
+          </ion-card-content>
+
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small icon-left>
+                <ion-icon [name]="recipe.difficulty === 1 ? 'star-outline' : recipe.difficulty === 2 ? 'star-half' : 'star'"></ion-icon>
+                {{ recipe.difficulty === 1 ? 'Easy' : recipe.difficulty === 2 ? 'Medium' : 'Chef' }}
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear small icon-left>
+                <ion-icon name="timer"></ion-icon>
+                {{ recipe.cookingTime }} minutes
+              </button>
+            </ion-col>
+            <ion-col text-right>
+              <button ion-button clear small icon-left>
+                <ion-icon name="thermometer"></ion-icon>
+                {{ recipe.cookingTemperature }} &#176; C
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- End of segment -->
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="addNewRecipe()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

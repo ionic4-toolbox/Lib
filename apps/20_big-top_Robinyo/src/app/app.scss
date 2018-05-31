@@ -1,0 +1,81 @@
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+/*
+  ios 	    ios Viewing on an iphone, ipad, or ipod will use the iOS styles.
+  android 	md 	Viewing on any android device will use the Material Design styles.
+  windows 	wp 	Viewing on any windows device inside cordova or electron uses the Windows styles.
+  core     	md 	Any platform that doesn’t fit any of the above platforms will use the Material Design styles.
+ */
+
+.ios, .md, .wp {
+
+  h1 {
+    font-size: 3.0rem;
+    margin-top: 4px;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+  }
+
+  p {
+    font-size: 2.2rem;
+  }
+
+  .item {
+    background-color: transparent;
+  }
+
+  // Don't UPPERCASE .buttons
+  button {
+    text-transform: none;
+  }
+
+  .card p {
+    font-size: 1.4rem;
+  }
+
+  /*
+  .label[floating] {
+    color: white;
+  }
+  */
+
+  .tabs .tabbar {
+    // background: white;
+    background-color: transparent;
+  }
+
+  .tabs .tab-button-icon {
+    color: #8c8c8c;
+  }
+
+  .tabs .tab-button[aria-selected=true] .tab-button-icon {
+    // color: color($colors, danger);
+    color: white; // color: #488aff;
+  }
+
+  .tabs .tab-button {
+    color: #8c8c8c;
+  }
+
+  .tabs .tab-button:hover:not(.disable-hover),
+  .tabs .tab-button[aria-selected=true] {
+    // color: color($colors, danger);
+    color: white; // color: #488aff;
+  }
+}
+
+// https://github.com/ionic-team/ionic-preview-app/blob/master/src/theme/variables.scss

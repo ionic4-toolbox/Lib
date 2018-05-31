@@ -1,0 +1,15 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "./.cordova/development.keystore",
+      "alias": "MBADev",
+      "password": "123456",
+      "storePassword": "123456"
+    }
+},
+  "ios": {
+    "debug": {
+      "developmentTeam": "685ED4TK2T"
+    }        
+  }
+}

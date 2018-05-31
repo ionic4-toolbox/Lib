@@ -1,0 +1,29 @@
+[{
+  "id": 0,
+  "name": "животные",
+  "imgPath": "animals.png",
+  "firstEntry": true,
+  "enabled": true,
+  "order": 0
+},{
+  "id": 1,
+  "name": "Кухня",
+  "imgPath": "kitchen.jpg",
+  "firstEntry": true,
+  "enabled": true,
+  "order": 0
+},{
+  "id": 2,
+  "name": "Цвета",
+  "imgPath": "colors.jpg",
+  "firstEntry": true,
+  "enabled": true,
+  "order": 0
+},{
+  "id": 3,
+  "name": "Фрукты",
+  "imgPath": "fruits.jpg",
+  "firstEntry": true,
+  "enabled": true,
+  "order": 0
+}]

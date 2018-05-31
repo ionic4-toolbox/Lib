@@ -1,0 +1,36 @@
+
+<mat-card>
+    <h1>The story of Samurai</h1>
+
+    <p>Brave Samurai table</p>
+
+    <p *ngIf="!samurais"><em>Loading...</em></p>
+
+    <mat-list dense>
+        <h3 mat-subheader>Samurais</h3>
+        <mat-list-item *ngFor="let samurai of samurais">
+            {{ samurai.name}}
+        </mat-list-item>
+    </mat-list>
+
+    <!--<table class='table'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <mat-card *ngFor="let samurai of samurais">
+
+                    <td>{{ samurai.id }}</td>
+                    <td>{{ samurai.name}}</td>
+                </mat-card>
+            </tr>
+        </tbody>
+    </table>-->
+    <samurai-form></samurai-form>
+</mat-card>
+
+

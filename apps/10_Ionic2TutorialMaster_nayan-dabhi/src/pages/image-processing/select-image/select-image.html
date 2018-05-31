@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Select Image</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="page-select-image">
+  <ion-card text-center>
+    <ion-card-content>
+      <img [src]="imageSrc" (click)="openImageView()"/>
+    </ion-card-content>
+
+    <!--
+    <ion-item text-center padding>
+      <ion-fab center middle on-tap="openGallery()">
+        <button ion-fab>
+          <ion-icon name="image"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-item>
+
+    <ion-item text-center no-padding no-margin>
+      <ion-label no-margin>
+        <p>Choose a Photo</p>
+      </ion-label>
+    </ion-item>
+    -->
+
+  </ion-card>
+
+  <ion-fab right bottom on-tap="openGallery()">
+    <button ion-fab>
+      <ion-icon name="image"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <!--
+  <ion-fab right bottom>
+    <button ion-fab>
+      <ion-icon name="image"></ion-icon>
+    </button>
+
+    <ion-fab-list side="top">
+      <button ion-fab color="primary" on-tap="openGallery()">
+        <ion-icon name="image"></ion-icon>
+      </button>
+
+      <button ion-fab color="primary">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+  -->
+
+</ion-content>

@@ -1,0 +1,264 @@
+
+interface MediaElement {
+    id: string;
+    muted: boolean;   //默认true
+    volume: number;   //默认0
+}
+
+interface ForceOptions {
+    useDefaultDevices: true;   //默认true
+}
+
+interface Session {
+    audio: boolean;  //默认true
+    video: boolean;  //默认true
+    data: boolean;
+}
+
+interface Bandwidth {
+    screen: number;  //512
+    audio: number;   //128,
+    video: number;  // 512
+}
+
+interface Codecs {
+    audio: string;   //默认'opus'。选项有：'opus','H264'
+    video: string;   //默认'VP9'。选项有：'VP9','G722'
+}
+
+interface MediaConstraints {
+    audio: boolean;
+    video: boolean;
+}
+
+interface Params {
+    maxaveragebitrate: number;
+    maxplaybackrate: number;
+    stereo: number;
+    maxptime: number;
+}
+
+interface Mandatory {
+    OfferToReceiveAudio: boolean;
+    OfferToReceiveVideo: boolean;
+}
+interface Optional {
+    VoiceActivityDetection: boolean;
+}
+interface SdpConstraints {
+    mandatory: Mandatory;
+    optional: Array<Optional>;
+}
+
+interface OptionalArgument {
+    optional: Array<Optional>;
+    mandatory: any;
+}
+
+interface Candidates {
+    host: boolean;
+    stun: boolean;
+    turn: boolean;
+}
+
+interface IceProtocols {
+    tcp: boolean;
+    udp: boolean;
+}
+
+
+interface RTCEvent {
+    broadcastId: string;
+    numberOfBroadcastViewers: number;
+}
+
+export declare class RTCMultiConnection {
+    sdpConstraints: SdpConstraints;
+    onstream(e: HTMLVideoElement): void;
+    onstreamended(e: HTMLVideoElement): void;
+    onopen(event: any): void;
+    onclose(event: any): void;
+    onerror(error: any): void;
+    onmessage(event: any): void;
+    onleave(userid: string): void;
+    onEntireSessionClosed: any;
+    attachStreams: any;
+    userid: string;
+    join: any;
+    maxParticipantsAllowed: number;
+    /** 关闭套接字 */
+    closeSocket(): void;
+    /**
+     * 打开连接
+     * @param localUserid 本机用户id
+     * @param isPublicModerator 布尔值或者函数
+     */
+    open(localUserid: string, isPublicModerator: any): void;
+    /** 用户id或者远程链接id */
+    sessionid: string;
+    /** 是否已初始化 */
+    isInitiator: boolean;
+    closeEntireSession(callback: any): void;
+    checkPresence(remoteUserId: string, callback: any): void;
+    send(data: any, remoteUserId: string): void;
+    channel: string;
+
+    extra: any;
+    // attachStreams: Array<any>;
+    enableFileSharing: boolean;
+    enableLogs: boolean;
+    isMobileDevice: boolean;
+    // isInitiator: boolean;
+    session: Session;
+    socketURL: string;
+    socketMessageEvent: string;
+    socketCustomEvent: string;
+    DetectRTC: any;
+    bandwidth: Bandwidth;
+    codecs: Codecs;
+    mediaConstraints: MediaConstraints;
+    rtcpMuxPolicy: string;  //'negotiate' or "required"
+    iceTransportPolicy: string;  //null, "relay" or "all"
+    optionalArgument: OptionalArgument;
+    candidates: Candidates;
+    iceProtocols: IceProtocols;
+    filesContainer: HTMLElement;
+    videosContainer: HTMLElement;
+    removeStream(streamid: string, remoteUserId: string): void;
+    addStream(session: Session, remoteUserId: string): void;
+    invokeGetUserMedia(localMediaConstraints: any, callback: any, session: Session): void;
+    applyConstraints(stream: any, mediaConstraints: any): void;
+    replaceTrack(track: any, remoteUserId: string, isVideoTrack: boolean): void;
+    replaceTrack(session: Session, remoteUserId: string, isVideoTrack: boolean): void;
+    resetTrack(remoteUsersIds: any, isVideoTrack: boolean): void;
+    renegotiate(remoteUserId: string): void;
+    setStreamEndHandler(stream: any, isRemote: boolean): void;
+    onMediaError(error: any, constraints: any): void;
+    addNewBroadcaster(broadcasterId: string, userPreferences: any): void;
+    keepNextBroadcasterOnServer(): void;
+    shareFile(file: any, remoteUserId: string): void;
+    onNewParticipant(participantId: string, userPreferences: any): void;
+    acceptParticipationRequest(participantId: string, userPreferences: any): void;
+    onShiftedModerationControl(sender: any, existingBroadcasters: any): void;
+    acceptModerationControl(sender: any, existingBroadcasters: any): void;
+    shiftModerationControl(remoteUserId: string, existingBroadcasters: any, firedOnLeave: any): void;
+    invokeSelectFileDialog(callback: any): void;
+    getPublicModerators(userIdStartsWith: any, callback: any): void;
+    onmute(e: HTMLElement): void;
+    onunmute(e: HTMLElement): void;
+    onExtraDataUpdated(event: any): void;
+    onJoinWithPassword(remoteUserId: string): void;
+    onInvalidPassword(remoteUserId: string, oldPassword: string): void;
+    onPasswordMaxTriesOver(remoteUserId: string): void;
+
+    getAllParticipants(sender: any): Array<string>;
+    getAllParticipants(): Array<string>;
+
+    connectSocket(callback: any): void;
+    closeSocket(): void;
+    getSocket(callback: any): any;
+    socket: any;
+    getRemoteStreams(remoteUserId: string): any;
+    setCustomSocketEvent(customEvent: string): void;
+    getNumberOfBroadcastViewers(broadcastId: string, callback: any): void;
+    onNumberOfBroadcastViewersUpdated(event: RTCEvent): void;
+    onUserStatusChanged(event: any, dontWriteLogs: any): void;
+    setCustomSocketHandler(customSocketHandler: any): void;
+    chunkSize: number;
+    //    maxParticipantsAllowed: number;
+    disconnectWith: any;
+    checkPresence(remoteUserId: string, callback: any): void;
+    onReadyForOffer(remoteUserId: string, userPreferences: any): void;
+    setUserPreferences(userPreferences: any): any;
+    updateExtraData(): void;
+    enableScalableBroadcast: boolean;
+    maxRelayLimitPerUser: number;
+    dontCaptureUserMedia: boolean;
+    dontAttachStream: boolean;
+    dontGetRemoteStream: boolean;
+    onReConnecting(event: any): void;
+    beforeAddingStream(stream: any): any;
+    beforeRemovingStream(stream: any): any;
+    getScreenConstraints(callback: any, audioPlusTab: any): any;
+    modifyScreenConstraints(screen_constraints: any): any;
+    onPeerStateChanged(state: any): void;
+    isOnline: boolean;
+    isLowBandwidth: boolean;
+    getExtraData(remoteUserId: string): any;
+    onUserIdAlreadyTaken(useridAlreadyTaken: string, yourNewUserId: string): void;
+    onRoomFull(roomid: string): void;
+    trickleIce: boolean;
+    version: string;
+    onSettingLocalDescription(event: any): void;
+    oneRoomAlreadyExist(roomid: string): void;
+    /**
+    * 关闭所有session
+    * @param callback 回调函数
+    */
+    closeEntireSession(callback: any): void;
+    /** 
+    * 关闭连接。与close()功能相同。
+    */
+    leave(): void;
+    /**
+    * 关闭连接。与close()功能相同。
+    */
+    disconnect(): void;
+    /**
+    * 调用getRandomString()得到的随机生成的房间号
+    */
+    token(): string;
+
+
+    constructor(roomid: any, forceOptions: any);
+
+}
+
+
+
+//export declare function SocketConnection(connection: any, connectCallback: any): void;
+
+// export declare function MultiPeers(connection:any):void;
+// export declare function fireEvent(obj: any, eventName: string, args: any): void;
+// export declare function setHarkEvents(connection: any, streamEvent: any): void;
+// export declare function setMuteHandlers(connection:any, streamEvent:any): void;
+// export declare function getRandomString(): string;
+// /** Get HTMLAudioElement/HTMLVideoElement accordingly */
+// export declare function getRMCMediaElement(stream: any, callback: any, connection: any): void;
+
+// export declare function listenEventHandler(eventName, eventHandler) { }
+// export declare function removeNullEntries(array) { }
+// export declare function isData(session) { }
+// export declare function isNull(obj) { }
+// export declare function isString(obj) { }
+// export declare var MediaStream;
+// export declare function isAudioPlusTab(connection, audioPlusTab) { }
+// export declare function getAudioScreenConstraints(screen_constraints) { }
+// export declare function setCordovaAPIs() { }
+// export declare function setSdpConstraints(config) { }
+// export declare var RTCPeerConnection;
+// export declare var RTCSessionDescription;
+// export declare var RTCIceCandidate;
+// export declare var MediaStreamTrack;
+// export declare function PeerInitiator(config) { }
+// export declare var CodecsHandler;
+// export declare var OnIceCandidateHandler;
+// export declare var IceServersHandler;
+// export declare function setStreamType(constraints, stream) { }
+// export declare function getUserMediaHandler(options) { }
+// export declare var StreamsHandler;
+// export declare function onMessageCallback(data) { }
+// export declare var chromeMediaSource;
+// export declare var sourceId;
+// export declare var screenCallback;
+// export declare function isChromeExtensionAvailable(callback) { }
+// export declare function isFirefoxExtensionAvailable(callback) { }
+// export declare function getSourceId(callback, audioPlusTab) { }
+// export declare function getChromeExtensionStatus(extensionid, callback) { }
+// export declare function getScreenConstraints(callback, audioPlusTab) { }
+// export declare function TextReceiver(connection) { }
+// export declare var TextSender;
+// export declare var FileProgressBarHandler;
+// export declare var TranslationHandler;
+
+

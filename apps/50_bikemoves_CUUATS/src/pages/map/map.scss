@@ -1,0 +1,55 @@
+page-map {
+  ion-header {
+    z-index: 1000;
+  }
+  #map {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  #trip-stats {
+    left: 0;
+    top: 0;
+    width: 100%;
+    & > span {
+      box-sizing: border-box;
+      color: white;
+      display: block;
+      float: left;
+      font-size: 1.9rem;
+      padding: 0.4em 0.1em;
+      text-align: center;
+    }
+    .activity {
+      background-color: #680caa;
+      width: 20%;
+    }
+    .duration,
+    .distance {
+      width: 40%;
+      .icon {
+        margin-right: 0.25em;
+      }
+    }
+    .duration {
+      background-color: #0c6aaa;
+    }
+    .distance {
+      background-color: #2faa0c;
+    }
+  }
+  /* Map popup */
+  .mapboxgl-popup {
+    max-width: 80%;
+  }
+  .mapboxgl-popup-content {
+    h2 {
+      font-size: 1.4em;
+      font-weight: 400;
+      margin: 0 0 0.25em 0;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}

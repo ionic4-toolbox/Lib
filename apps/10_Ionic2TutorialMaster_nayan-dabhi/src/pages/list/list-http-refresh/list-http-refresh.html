@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Listing With Refresh</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="mSelectedViewType == 'grid'" (click)="changeViewType('list')">
+        <ion-icon name="list"></ion-icon>
+      </button>
+
+      <button ion-button icon-only *ngIf="mSelectedViewType == 'list'" (click)="changeViewType('grid')">
+        <ion-icon name="grid"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div [ngSwitch]="mSelectedViewType">
+    <ion-list *ngSwitchCase="'list'">
+      <ion-item *ngFor="let mProduct of mProductList">
+        <ion-avatar item-left>
+          <img src="{{mProduct.medium_image}}" />
+        </ion-avatar>
+
+        <h2> {{mProduct.title}} </h2>
+        <ion-badge>Rs. {{mProduct.price}}</ion-badge>
+      </ion-item>
+    </ion-list>
+
+    <ion-grid *ngSwitchCase="'grid'">
+      <ion-row *ngFor="let i of rows">
+        <ion-col *ngFor="let mProduct of mProductList | slice:(i*2):(i+1)*2" width-50>
+          <ion-card>
+            <ion-avatar item-left>
+              <img src="{{mProduct.medium_image}}" />
+            </ion-avatar>
+
+            <ion-card-content>
+              <ion-card-title>
+                <h6>{{mProduct.title}}</h6>
+                <ion-badge>Rs. {{mProduct.price}}</ion-badge>
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

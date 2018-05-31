@@ -1,0 +1,335 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meal plan{{ isDirty ? '*' : ''}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="resetMealPlan()">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="saveMealPlan()">
+        <ion-icon name="sync"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="mealPlanDetails">
+      <ion-segment-button value="guidelines">
+        <ion-icon name="bulb"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="meals">
+        <ion-icon name="clock"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="nutrition">
+        <ion-icon name="nutrition"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="warnings">
+        <ion-icon color="{{mealPlan?.warnings?.length ? 'danger' : ''}}"  name="warning"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button (click)="loadFavourites()" value="favourites">
+        <ion-icon name="heart"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab bottom right *ngIf="mealPlanDetails === 'meals'">
+    <button ion-fab color="secondary" (click)="addNewMeal()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div [ngSwitch]="mealPlanDetails">
+
+    <!-- Start of segment -->
+    <ion-list *ngSwitchCase="'guidelines'">
+      <ion-item>
+        <h2>Eat natural and wholesome food</h2>
+        <p text-wrap>We are genetically designed to digest and ingest real food with all nutrient synergy</p>
+      </ion-item>
+      <ion-item>
+        <h2>Don't overeat</h2>
+        <p text-wrap>Don't exceed the stomach's capacity of 1000 g</p>
+      </ion-item>
+      <ion-item>
+        <h2>Eat alkaline forming meals</h2>
+        <p text-wrap>Eat mostly raw fruits and vegetables to refresh and heal the body</p>
+      </ion-item>
+    </ion-list>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'meals'">
+      <ion-item-group *ngFor="let meal of mealPlan?.meals">
+        <ion-item-divider color="primary">
+          {{ meal.time }}
+        </ion-item-divider>
+        <ion-item *ngFor="let item of meal.mealItems">
+          <h2 text-wrap>{{ item.name }}</h2>
+          <p text-wrap>{{ item.quantity * item.servings }}{{ item.unit }}</p>
+          <p item-content>{{ item.servings }} servings</p>
+        </ion-item>
+        <button ion-item [navPush]="detailsPage" [navParams]="{ meal: meal, mealPlan: mealPlan }">
+          <ion-note>
+            View more
+          </ion-note>
+          <ion-note item-right>
+            <ion-icon item-right name="arrow-forward"></ion-icon>
+          </ion-note>
+        </button>
+      </ion-item-group>
+    </div>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'nutrition'">
+      <ion-item-group>
+        <ion-item-divider>Info</ion-item-divider>
+        <ion-item>
+          Energy
+          <p item-right>{{ mealPlan.dailyNutrition.energy?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Omega-3:Omega-6 ratio
+          <ion-icon color="{{mealPlan.omega36Ratio > 0.5 ? 'secondary' : 'danger'}}" name="{{mealPlan.omega36Ratio > 0.5 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.omega36Ratio > 0.5 ? 'secondary' : 'danger' }}">{{ mealPlan.omega36Ratio }}</p>
+        </ion-item>
+        <ion-item>
+          PRAL
+          <ion-icon color="{{mealPlan.pral < 0 ? 'secondary' : 'danger'}}" name="{{mealPlan.pral < 0 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.pral < 0 ? 'secondary' : 'danger' }}">{{ mealPlan.pral > 0 ? 'Acid forming' : 'Alkaline forming'}}</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Macronutrients</ion-item-divider>
+        <ion-item>
+          Protein
+          <p item-right>{{ mealPlan.dailyNutrition.protein?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Fats
+          <p item-right>{{ mealPlan.dailyNutrition.fats?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Carbohydrates
+          <p item-right>{{ mealPlan.dailyNutrition.carbs?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Water
+          <p item-right>{{ mealPlan.dailyNutrition.water?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Essential amino acids</ion-item-divider>
+        <ion-item>
+          Histidine
+          <p item-right>{{ mealPlan.dailyNutrition.histidine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Isoleucine
+          <p item-right>{{ mealPlan.dailyNutrition.isoleucine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Leucine
+          <p item-right>{{ mealPlan.dailyNutrition.leucine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Lysine
+          <p item-right>{{ mealPlan.dailyNutrition.lysine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Methionine
+          <p item-right>{{ mealPlan.dailyNutrition.methionine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Phenylalanine
+          <p item-right>{{ mealPlan.dailyNutrition.phenylalanine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Threonine
+          <p item-right>{{ mealPlan.dailyNutrition.threonine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Tryptophan
+          <p item-right>{{ mealPlan.dailyNutrition.tryptophan?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Essential vitamins</ion-item-divider>
+        <ion-item>
+          Vitamin A
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminA?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B1 (Thiamine)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB1?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B2 (Riboflavin)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB2?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B3 (Niacin)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB3?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B5 (Pantothenic acid)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB5?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B6 (Pyridoxine)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB6?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B9 (Folate)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB9?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin B12 (Cobalamin)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminB12?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Choline
+          <p item-right>{{ mealPlan.dailyNutrition.choline?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin C (Ascorbic acid)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminC?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin D (Cholecalciferol)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminD?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin E (Tocopherol)
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminE?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Vitamin K
+          <p item-right>{{ mealPlan.dailyNutrition.vitaminK?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Essential minerals</ion-item-divider>
+        <ion-item>
+          Calcium
+          <p item-right>{{ mealPlan.dailyNutrition.calcium?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Copper
+          <p item-right>{{ mealPlan.dailyNutrition.copper?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Iron
+          <p item-right>{{ mealPlan.dailyNutrition.iron?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Magnesium
+          <p item-right>{{ mealPlan.dailyNutrition.magnesium?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Manganese
+          <p item-right>{{ mealPlan.dailyNutrition.manganese?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Phosphorus
+          <p item-right>{{ mealPlan.dailyNutrition.phosphorus?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Potassium
+          <p item-right>{{ mealPlan.dailyNutrition.potassium?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Selenium
+          <p item-right>{{ mealPlan.dailyNutrition.selenium?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Sodium
+          <p item-right>{{ mealPlan.dailyNutrition.sodium?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Zinc
+          <p item-right>{{ mealPlan.dailyNutrition.zinc?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Essential fatty acids</ion-item-divider>
+        <ion-item>
+          Omega-3 (ALA)
+          <p item-right>{{ mealPlan.dailyNutrition.ala?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Omega-3 (DHA)
+          <p item-right>{{ mealPlan.dailyNutrition.dha?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Omega-3 (EPA)
+          <p item-right>{{ mealPlan.dailyNutrition.epa?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Omega-6 (LA)
+          <p item-right>{{ mealPlan.dailyNutrition.la?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>Non-essential nutrients</ion-item-divider>
+        <ion-item>
+          Alcohol
+          <ion-icon color="{{mealPlan.dailyNutrition.alcohol?.value < 100 ? 'secondary' : 'danger'}}" name="{{mealPlan.dailyNutrition.alcohol?.value < 100 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.dailyNutrition.alcohol?.value < 100 ? 'secondary' : 'danger' }}">{{ mealPlan.dailyNutrition.alcohol?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Caffeine
+          <ion-icon color="{{mealPlan.dailyNutrition.caffeine?.value < 100 ? 'secondary' : 'danger'}}" name="{{mealPlan.dailyNutrition.caffeine?.value < 100 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.dailyNutrition.caffeine?.value < 100 ? 'secondary' : 'danger' }}">{{ mealPlan.dailyNutrition.caffeine?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Trans fat
+          <ion-icon color="{{mealPlan.dailyNutrition.transFat?.value < 100 ? 'secondary' : 'danger'}}" name="{{mealPlan.dailyNutrition.transFat?.value < 100 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.dailyNutrition.transFat?.value < 100 ? 'secondary' : 'danger' }}">{{ mealPlan.dailyNutrition.transFat?.value }}%</p>
+        </ion-item>
+        <ion-item>
+          Sugars
+          <ion-icon color="{{mealPlan.dailyNutrition.sugars?.value < 100 ? 'secondary' : 'danger'}}" name="{{mealPlan.dailyNutrition.sugars?.value < 100 ? 'thumbs-up' : 'thumbs-down'}}" item-right></ion-icon>
+          <p item-right ion-text color="{{ mealPlan.dailyNutrition.sugars?.value < 100 ? 'secondary' : 'danger' }}">{{ mealPlan.dailyNutrition.sugars?.value }}%</p>
+        </ion-item>
+      </ion-item-group>
+    </div>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'warnings'">
+      <ion-list>
+        <ion-item *ngFor="let warning of mealPlan.warnings">
+          <ion-icon color="danger" name="warning" item-left></ion-icon>
+          <h2 text-wrap>{{ warning.message }}</h2>
+          <p text-wrap>{{ warning.moreInfo }}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!-- End of segment -->
+
+    <!-- Start of segment -->
+    <div *ngSwitchCase="'favourites'">
+      <ion-item-group *ngFor="let meal of favouriteMeals">
+        <ion-item-divider color="primary">
+          {{ meal.favouriteName }}
+        </ion-item-divider>
+        <ion-item *ngFor="let item of meal.mealItems">
+          <h2 text-wrap>{{ item.name }}</h2>
+          <p text-wrap>{{ item.quantity * item.servings }}{{ item.unit }}</p>
+          <p item-content>{{ item.servings }} servings</p>
+        </ion-item>
+        <button ion-item (click)="addToMealPlan(meal)">
+          <ion-note>
+            Add to meal plan
+          </ion-note>
+          <ion-note item-right>
+            <ion-icon item-right name="add"></ion-icon>
+          </ion-note>
+        </button>
+      </ion-item-group>
+    </div>
+    <!-- End of segment -->
+  </div>
+
+</ion-content>

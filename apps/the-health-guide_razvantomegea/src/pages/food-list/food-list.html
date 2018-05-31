@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Foods</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only padding (click)="showFilter()">
+                <ion-icon name="funnel"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-searchbar debounce="2000" placeholder="Search foods" [(ngModel)]="searchQuery" (ionInput)="refreshItems()" (ionCancel)="clearSearch($event)">
+    </ion-searchbar>
+    <ion-list>
+        <button ion-item *ngFor="let item of foods" [navPush]="detailsPage" [navParams]="itemParams(item.ndbno)">
+            <h2 text-wrap>{{ item.name }}</h2>
+            <p>{{ item.group }}</p>
+            <ion-note item-right>
+                View more
+            </ion-note>
+        </button>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

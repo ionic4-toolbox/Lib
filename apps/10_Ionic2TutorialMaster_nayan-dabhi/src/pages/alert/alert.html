@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Alert Demo Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+  <p>
+    <button ion-button round (click)="doAlert()">Show Basic Alert</button>
+  </p>
+
+  <p>
+    <button ion-button round color="light" (click)="showConfirm()">Show Confirm Alert</button>
+  </p>
+
+  <p>
+    <button ion-button round (click)="showPrompt()">Show Prompt Alert</button>
+  </p>
+
+  <p>
+    <button ion-button round color="light" (click)="showRadioAlert()">Show Radio Alert</button>
+  </p>
+
+  <p>
+    <button ion-button round (click)="showCheckboxAlert()">Show CheckBox Alert</button>
+  </p>
+
+  <p>
+    <button ion-button round color="light" (click)="showActionSheet()">Show Action Sheet</button>
+  </p>
+
+</ion-content>

@@ -1,0 +1,29 @@
+{
+  "extends": "../tsconfig.ng-cli.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc/spec",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "baseUrl": "../src",
+    "paths": {
+      "@app/*": [ "app/*" ],
+      "@assets/*": [ "assets/*" ],
+      "@env": [ "environments/environment" ],
+      "@pages/*": [ "pages/*" ],
+      "@services/*": [ "services/*" ],
+      "@tests/*": [ "./*" ],
+      "@theme/*": [ "theme/*" ]
+    }
+  },
+  "files": [
+    "src/test.ts"
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
+}

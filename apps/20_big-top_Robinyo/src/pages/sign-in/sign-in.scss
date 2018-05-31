@@ -1,0 +1,43 @@
+page-sign-in {
+
+  p {
+    font-size: 1.8rem;
+  }
+
+  .app-icon-container {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .app-icon-zoom {
+    zoom: 4.0;
+  }
+
+  .sign-in-button-container {
+    padding-top: 40px;
+  }
+
+  .validator-error {
+    color: color($colors, danger);
+    padding-top: 8px;
+    padding-left: 16px;
+  }
+
+  .fab-container {
+    position: relative;
+  }
+
+}
+
+/*
+
+  .benefit-tag-line-row {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .benefit-tag-line-icon {
+    zoom: 4.0;
+  }
+
+*/

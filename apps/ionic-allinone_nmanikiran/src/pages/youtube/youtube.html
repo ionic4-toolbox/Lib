@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Playlist Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label stacked>Channel ID</ion-label>
+    <ion-input type="text" [(ngModel)]="channelId"></ion-input>
+  </ion-item>
+
+  <button full ion-button (click)="searchPlaylists()" [disabled]="channelId === ''" color="primary">
+    Get Playlists</button>
+
+  <ion-list no-padding>
+
+    <button ion-item *ngFor="let list of playlists" (click)="openPlaylist(list)">
+      <ion-thumbnail item-start>
+        <img [src]="list.snippet.thumbnails.high.url">
+      </ion-thumbnail>
+      <h2>{{ list.snippet.title }}</h2>
+      <p>{{ list.snippet.publishedAt | date:'short' }}</p>
+    </button>
+
+  </ion-list>
+  
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(searchPlaylists())">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Person Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{person.picture.thumbnail}}">
+      </ion-avatar>
+
+      <h2>{{person.name.first}} {{person.name.last}}</h2>
+      <p>{{person.email}}</p>
+      <!-- <ion-badge item-end>9</ion-badge> -->
+    </ion-item>
+
+    <!-- 3 images = 'large', 'medium', 'thumbnail' -->
+    <img src="{{person.picture.large}}" />
+
+    <ion-card-content>
+      <p>{{person.location.street}}, {{person.location.city}}, {{person.location.state}}</p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon color="danger" name='thumbs-down' item-start (click)="doAlert('Unlike')"></ion-icon>
+      <ion-icon color="primary" name='thumbs-up' item-end (click)="doAlert('Like')"></ion-icon>
+    </ion-item>
+
+    <!--
+    <ion-item>
+      <button ion-button clear item-start  (click)="doAlert('Unlike')">
+        <ion-icon color="danger" name='thumbs-down'></ion-icon>
+      </button>
+
+      <button ion-button clear item-end (click)="doAlert('Like')">
+        <ion-icon name='thumbs-up'></ion-icon>
+      </button>
+    </ion-item>
+    -->
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Upload Trip
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-left (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="uploadTrip()">
+        <ion-icon name="cloud-upload"></ion-icon>
+        Upload
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-margin>
+    <ion-item-group>
+      <ion-item>
+        <p text-wrap>
+          Help improve the bike network by sharing your trip with
+          local planners! The details of your trip will be kept private.
+        </p>
+      </ion-item>
+      <ion-item>
+        <ion-label>I biked from</ion-label>
+        <ion-select [(ngModel)]="trip.origin">
+          <ion-option *ngFor="let option of locationTypeOptions" [value]="option.value">{{option.label}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>I biked to</ion-label>
+        <ion-select [(ngModel)]="trip.destination">
+          <ion-option *ngFor="let option of locationTypeOptions" [value]="option.value">{{option.label}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>I took my bike on a bus.</ion-label>
+        <ion-toggle [(ngModel)]="trip.transit"></ion-toggle>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <img *ngIf="imageURL" [src]="imageURL" alt="An image of the trip">
+</ion-content>

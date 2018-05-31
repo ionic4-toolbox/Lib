@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar #searchBar *ngIf="showSearchBar"
+      [(ngModel)]="searchText"
+      animated="true"
+      showCancelButton="true"
+      placeholder="Search By FirstName, LastName Or Email"
+      (ionInput)="searchData($event)"
+      (ionCancel)="onSearchCancel()"
+      (ionBlur)="onEventHandle('blur event')"></ion-searchbar>
+
+    <ion-title *ngIf="!showSearchBar">Static List</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only end (click)="onClickSearchIcon()" *ngIf="!showSearchBar">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-icon [name]="item.icon" item-left></ion-icon>
+      {{item.title}}
+      <div class="item-note" item-right>
+        {{item.note}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>

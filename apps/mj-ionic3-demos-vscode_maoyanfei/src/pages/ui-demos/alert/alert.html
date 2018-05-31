@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>alert</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button block color="dark" (click)="doBasicAlert()">基本警报</button>
+  <button ion-button color="primary" block (click)="doConfirmAlert()">确认提醒</button>
+  <button ion-button color="secondary" block (click)="doPromptAlert()">提示提醒</button>
+  <button ion-button block light (click)="doRadioAlert()">单选警报</button>
+  <button ion-button block color="danger" (click)="doCheckboxAlert()">复选警报</button>
+</ion-content>

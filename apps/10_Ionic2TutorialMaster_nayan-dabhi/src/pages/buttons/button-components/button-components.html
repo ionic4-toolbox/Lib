@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Button In Components</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="buttons-components-page">
+  <ion-card>
+    <ion-card-content>
+      <img src="assets/img/img-icon.png" />
+    </ion-card-content>
+
+    <ion-item>
+      <button ion-button clear item-start (click)="doAlert('Like')">Like</button>
+      <button ion-button clear item-end (click)="doAlert('Comment')">Comment</button>
+    </ion-item>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      Inner Button
+      <button ion-button item-end outline>Outline</button>
+    </ion-item>
+
+    <ion-item>
+      Left Icon Button
+      <button ion-button item-end outline icon-start>
+        <ion-icon name='star'></ion-icon>
+        Left Icon
+      </button>
+    </ion-item>
+
+    <ion-item>
+      Right Icon Button
+      <button ion-button item-end outline icon-end>
+        Right Icon
+        <ion-icon name='star'></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

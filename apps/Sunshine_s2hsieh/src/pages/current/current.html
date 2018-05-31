@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Current</ion-title>
+  </ion-navbar>
+  <header-buttons *ngIf="search && pref" [search]="search" [pref]="pref"></header-buttons>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="view">
+    <ion-segment-button [value]="mode.default">{{mode.default|properNoun}}</ion-segment-button>
+    <ion-segment-button [value]="mode.extra">{{mode.extra|properNoun}}</ion-segment-button>
+  </ion-segment>
+
+  <ion-refresher (ionRefresh)="fetchData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngIf="error.default && view == mode.default || error.extra && view == mode.extra">
+    <ion-card-content>
+      <p text-center>Data failed to load from Weather Underground.</p>
+      <p text-center>Please try agian later.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="forecast && pref && view == mode.default">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row align-items-center justify-content-center>
+          <ion-col col-3>
+            <img [src]="forecast.icon_url|iconSet:pref.icon" />
+          </ion-col>
+          <ion-col col-3>
+            <h1 text-center>{{getObservation(obs.temp)|number:"1.0-0"}}{{pref.degree|degSymbol}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row justify-content-center>
+          <ion-col col-6>
+            <h1 text-center>{{forecast.weather}}</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-center align-items-center text-center>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="umbrella"></ion-icon>
+            <h2>Precipitation</h2>
+            <h3>{{getObservation(obs.precip)}} {{pref.volume}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="flag"></ion-icon>
+            <h2>Wind</h2>
+            <h3>{{getObservation(obs.wind)}} {{pref.speed}} {{forecast.wind_dir}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="sunny"></ion-icon>
+            <h2>UV Level</h2>
+            <h3>{{forecast.UV|number:"1.0-0"}} ({{forecast.UV|uvLevel}})</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="speedometer"></ion-icon>
+            <h2>Pressure</h2>
+            <h3>{{getObservation(obs.pressure)}} {{pref.pressure}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="eye"></ion-icon>
+            <h2>Visibility</h2>
+            <h3>{{getObservation(obs.visibility)}} {{pref.distance}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <ion-icon name="water"></ion-icon>
+            <h2>Humidity</h2>
+            <h3>{{forecast.relative_humidity}}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="astro && pref && view == mode.extra">
+    <ion-card-header>
+      <h1 text-center>{{astro.phaseofMoon}}</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row align-items-center text-center>
+          <ion-col col-6 col-sm-4 offset-sm-2>
+            <h2>Sunrise</h2>
+            <h3>{{astro.sunrise.hour}}:{{astro.sunrise.minute}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <h2>Sunset</h2>
+            <h3>{{astro.sunset.hour}}:{{astro.sunset.minute}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4 offset-sm-2>
+            <h2>Moonrise</h2>
+            <h3>{{astro.moonrise.hour}}:{{astro.moonrise.minute}}</h3>
+          </ion-col>
+          <ion-col col-6 col-sm-4>
+            <h2>Moonset</h2>
+            <h3>{{astro.moonset.hour}}:{{astro.moonset.minute}}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

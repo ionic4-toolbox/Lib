@@ -1,0 +1,32 @@
+<ion-list>
+	<ion-item *ngFor="let day of forecasts" (click)="openHourlyForecast(day.date)">
+		<h1>{{day.period == 1 ? "Today" : day.date.weekday}}</h1>
+		<ion-row>
+			<ion-col col-3 text-center>
+				<img [src]="day.icon_url|iconSet:pref.icon" />
+			</ion-col>
+			<ion-col col-5>
+				<h2>{{day.conditions}}</h2>
+			</ion-col>
+			<ion-col col-4>
+				<h2>
+					<ion-icon name="thermometer"></ion-icon>
+					{{pref.degree == deg.metric ? day.high.celsius : day.high.fahrenheit}} {{pref.degree|degSymbol}} | {{pref.degree == deg.metric
+					? day.low.celsius : day.low.fahrenheit}}{{pref.degree|degSymbol}}</h2>
+			</ion-col>
+
+			<ion-col col-4>
+				<h2>
+					<ion-icon name="umbrella"></ion-icon> {{pref.volume == vol.metric ? day.qpf_allday.mm : day.qpf_allday.in}} {{pref.volume}}</h2>
+			</ion-col>
+			<ion-col col-4>
+				<h2 text-center>
+					<ion-icon name="flag"></ion-icon> {{pref.speed == speed.metric ? day.avewind.kph : day.avewind.mph}} {{pref.speed}} {{day.avewind.dir}}</h2>
+			</ion-col>
+			<ion-col col-4>
+				<h2 text-right>
+					<ion-icon name="water"></ion-icon> {{day.avehumidity}}%</h2>
+			</ion-col>
+		</ion-row>
+	</ion-item>
+</ion-list>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>gestures</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card (tap)="tapEvent($event)">
+    <ion-item>
+      Tapped(轻拍)：{{tap}} 次
+    </ion-item>
+  </ion-card>
+
+  <ion-card (press)="pressEvent($event)">
+    <ion-item>
+      Pressed(按下)：{{press}} 次
+    </ion-item>
+  </ion-card>
+
+  <ion-card (pan)="panEvent($event)">
+    <ion-item>
+      Panned(平移)：{{pan}} 次
+    </ion-item>
+  </ion-card>
+
+  <ion-card (swipe)="swipeEvent($event)">
+    <ion-item>
+      Swiped(滑动)：{{swipe}} 次
+    </ion-item>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Basic Button</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Basic Button Examples</h3>
+
+  <p>
+    <button ion-button (click)="setOnClick('Default')">Default</button>
+  </p>
+
+  <p>
+    <button ion-button color="light" (click)="setOnClick('Outline')" outline>Light</button>
+  </p>
+
+  <p>
+    <button ion-button color="secondary" (click)="setOnClick('Clear')" clear>Secondary</button>
+  </p>
+
+  <p>
+    <button ion-button color="danger" (click)="setOnClick('Round')" round>Danger</button>
+  </p>
+
+  <p>
+    <button ion-button color="dark" (click)="setOnClick('Block')" block>Dark</button>
+  </p>
+
+  <p>
+    <button ion-button full>Full Button</button>
+  </p>
+
+  <p>
+    <button ion-button small>Small</button>
+  </p>
+
+  <p>
+    <button ion-button>Default</button>
+  </p>
+
+  <p>
+    <button ion-button large>Large</button>
+  </p>
+
+</ion-content>

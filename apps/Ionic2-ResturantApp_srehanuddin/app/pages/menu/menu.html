@@ -1,0 +1,23 @@
+
+<ion-navbar *navbar danger >
+<ion-title>
+    Menu
+</ion-title>
+</ion-navbar>
+
+<ion-content>
+
+<ion-list>
+ 
+  <ion-item *ngFor="#item of menu">
+    <ion-thumbnail item-left>
+      <img src="images/menu/{{item.image}}">
+    </ion-thumbnail>
+    <h2>{{item.title}}</h2>
+    <p>Price : ${{item.price}}</p>
+    <button clear item-right (click)="addToCart(item)" ><ion-icon name="ios-cart"></ion-icon></button>
+  </ion-item>
+  
+</ion-list>
+    
+</ion-content>

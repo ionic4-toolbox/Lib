@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Account</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row justify-content-center align-items-center>
+            <ion-col align-self-center col-auto (click)="changeImage()">
+                <div class="upload-placeholder" *ngIf="!avatar">
+                    <ion-icon name="add"></ion-icon>
+                    <div>
+                        Choose image
+                    </div>
+                </div>
+                <img class="avatar avatar__big" [src]="avatar" alt="User avatar" *ngIf="avatar">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <input type="file" #fileInput style="visibility: hidden; height: 0px" (change)="processWebImage($event)" />
+    <button (click)="signout()" ion-button block>Sign out</button>
+    <button (click)="deleteAccountRequest()" ion-button block>Delete account</button>
+
+</ion-content>
